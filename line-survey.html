@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上京支援センター｜かんたんアンケート</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #06C755;
+    --green-light: #e8faf0;
+    --green-dark: #049a41;
+    --orange: #FF8C42;
+    --cream: #FFF9F0;
+    --warm-white: #FFFDF9;
+    --brown: #5C3D2E;
+    --brown-light: #8B6355;
+    --gray: #F5F0EB;
+    --gray-dark: #9E8E83;
+    --text: #3D2B1F;
+    --shadow: 0 4px 20px rgba(92,61,46,0.10);
+    --radius: 20px;
+  }
+
+  body {
+    font-family: 'Zen Maru Gothic', 'M PLUS Rounded 1c', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 60px;
+  }
+
+  /* ---- Header ---- */
+  .header {
+    background: var(--green);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(6,199,85,0.25);
+  }
+  .header-icon {
+    width: 42px; height: 42px;
+    background: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .header-info { color: white; }
+  .header-info h1 { font-size: 15px; font-weight: 700; line-height: 1.3; }
+  .header-info p { font-size: 11px; opacity: 0.88; margin-top: 1px; }
+  .header-badge {
+    margin-left: auto;
+    background: white;
+    color: var(--green);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ---- Chat bubbles intro ---- */
+  .chat-area {
+    padding: 20px 16px 0;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .chat-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .chat-row.right {
+    flex-direction: row-reverse;
+  }
+
+  .avatar {
+    width: 36px; height: 36px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(6,199,85,0.3);
+  }
+
+  .bubble {
+    max-width: 78%;
+    background: white;
+    border-radius: 18px 18px 18px 4px;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    line-height: 1.65;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .chat-row.right .bubble {
+    background: var(--green);
+    color: white;
+    border-radius: 18px 18px 4px 18px;
+  }
+
+  .bubble .emoji-big { font-size: 28px; display: block; margin-bottom: 6px; }
+  .bubble strong { color: var(--green-dark); }
+  .chat-row.right .bubble strong { color: white; }
+
+  .chat-time {
+    font-size: 10px;
+    color: var(--gray-dark);
+    margin-bottom: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ---- Step progress ---- */
+  .progress-wrap {
+    max-width: 600px;
+    margin: 24px auto 0;
+    padding: 0 16px;
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--brown-light);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .progress-bar {
+    height: 8px;
+    background: var(--gray);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), #4CD9A0);
+    border-radius: 10px;
+    transition: width 0.5s cubic-bezier(.4,0,.2,1);
+    width: 0%;
+  }
+  .step-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .step-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gray);
+    transition: all 0.3s;
+  }
+  .step-dot.active { background: var(--green); transform: scale(1.3); }
+  .step-dot.done { background: #4CD9A0; }
+
+  /* ---- Form card ---- */
+  .form-section {
+    max-width: 600px;
+    margin: 20px auto 0;
+    padding: 0 16px;
+  }
+
+  .question-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    box-shadow: var(--shadow);
+    display: none;
+    animation: slideUp 0.35s ease;
+  }
+  .question-card.active { display: block; }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-number {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green);
+    background: var(--green-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .q-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .q-sub {
+    font-size: 12px;
+    color: var(--gray-dark);
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+
+  /* ---- Choice buttons ---- */
+  .choices { display: flex; flex-direction: column; gap: 10px; }
+  .choice-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 2.5px solid var(--gray);
+    border-radius: 14px;
+    background: white;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    transition: all 0.2s;
+    text-align: left;
+  }
+  .choice-btn:hover { border-color: var(--green); background: var(--green-light); transform: translateX(4px); }
+  .choice-btn.selected { border-color: var(--green); background: var(--green-light); color: var(--green-dark); font-weight: 700; }
+  .choice-btn .choice-icon { font-size: 22px; flex-shrink: 0; }
+  .choice-btn .choice-check {
+    margin-left: auto;
+    width: 22px; height: 22px;
+    border: 2px solid var(--gray);
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .choice-btn.selected .choice-check {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+    font-size: 13px;
+  }
+
+  /* ---- Multi select ---- */
+  .multi-hint {
+    font-size: 11px;
+    color: var(--orange);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .choice-btn.multi { user-select: none; }
+  .choice-btn.multi .choice-check { border-radius: 6px; }
+
+  /* ---- Text input ---- */
+  .text-input-wrap { position: relative; }
+  .text-input-wrap textarea,
+  .text-input-wrap input {
+    width: 100%;
+    border: 2.5px solid var(--gray);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s;
+    background: white;
+    line-height: 1.6;
+  }
+  .text-input-wrap textarea:focus,
+  .text-input-wrap input:focus { border-color: var(--green); }
+  .text-input-wrap textarea { min-height: 100px; }
+  .char-count {
+    font-size: 11px;
+    color: var(--gray-dark);
+    text-align: right;
+    margin-top: 6px;
+  }
+
+  /* ---- Select dropdown ---- */
+  .styled-select {
+    width: 100%;
+    border: 2.5px solid var(--gray);
+    border-radius: 14px;
+    padding: 14px 40px 14px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    appearance: none;
+    background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239E8E83' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") no-repeat right 14px center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .styled-select:focus { border-color: var(--green); }
+
+  /* ---- Navigation ---- */
+  .nav-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .btn-back {
+    padding: 14px 20px;
+    border: 2px solid var(--gray);
+    border-radius: 14px;
+    background: white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brown-light);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .btn-back:hover { border-color: var(--brown-light); }
+  .btn-next {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    background: var(--green);
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(6,199,85,0.35);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-next:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(6,199,85,0.4); }
+  .btn-next:disabled { background: var(--gray); box-shadow: none; cursor: not-allowed; transform: none; color: var(--gray-dark); }
+
+  /* ---- Completion screen ---- */
+  #complete-screen {
+    display: none;
+    max-width: 600px;
+    margin: 30px auto 0;
+    padding: 0 16px;
+  }
+  .complete-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 36px 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    animation: slideUp 0.4s ease;
+  }
+  .complete-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    display: block;
+    animation: bounce 0.6s ease 0.3s both;
+  }
+  @keyframes bounce {
+    0%   { transform: scale(0); }
+    60%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  .complete-card h2 { font-size: 22px; font-weight: 700; color: var(--green-dark); margin-bottom: 10px; }
+  .complete-card p  { font-size: 14px; line-height: 1.7; color: var(--brown-light); }
+  .complete-summary {
+    background: var(--green-light);
+    border-radius: 14px;
+    padding: 16px;
+    margin: 20px 0;
+    text-align: left;
+  }
+  .complete-summary h3 { font-size: 12px; color: var(--green-dark); font-weight: 700; margin-bottom: 10px; }
+  .summary-item { font-size: 13px; margin-bottom: 6px; line-height: 1.5; }
+  .summary-item span { color: var(--gray-dark); display: block; font-size: 11px; }
+  .btn-appointment {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(6,199,85,0.4);
+    margin-top: 6px;
+    text-decoration: none;
+  }
+  .btn-appointment:hover { background: var(--green-dark); transform: translateY(-2px); }
+
+  /* ---- Hand-drawn deco ---- */
+  .deco-wave {
+    height: 40px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .deco-wave svg { position: absolute; bottom: 0; width: 100%; }
+
+  /* ---- Floating mascot ---- */
+  .mascot-float {
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    z-index: 200;
+    pointer-events: none;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+  .mascot-bubble {
+    background: white;
+    border-radius: 14px 14px 0 14px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green-dark);
+    box-shadow: var(--shadow);
+    margin-bottom: 6px;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .mascot-face {
+    width: 48px; height: 48px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 4px 16px rgba(6,199,85,0.4);
+    margin: 0 auto;
+  }
+
+  /* ---- Responsive ---- */
+  @media (min-width: 600px) {
+    .chat-area, .progress-wrap, .form-section, #complete-screen { padding: 0 24px; }
+    .bubble { font-size: 14px; }
+    .q-title { font-size: 18px; }
+    .btn-next { font-size: 16px; }
+  }
+  @media (min-width: 900px) {
+    body { background: #EEE9E0; }
+    .header { padding: 16px 40px; }
+    .chat-area, .progress-wrap, .form-section, #complete-screen {
+      max-width: 560px;
+      margin-left: auto; margin-right: auto;
+      padding: 0;
+    }
+    .mascot-float { right: calc(50% - 300px - 80px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-icon">🏙️</div>
+  <div class="header-info">
+    <h1>上京支援センター</h1>
+    <p>あなたの新しい一歩をサポート</p>
+  </div>
+  <div class="header-badge">公式アカウント</div>
+</header>
+
+<!-- Chat intro -->
+<div class="chat-area">
+  <div class="chat-row" style="margin-top: 16px;">
+    <div class="avatar">🏙️</div>
+    <div>
+      <div class="chat-time">上京支援センター</div>
+      <div class="bubble">
+        <span class="emoji-big">👋</span>
+        はじめまして！<br>
+        <strong>上京支援センター</strong>です。<br><br>
+        東京への第一歩、一緒に考えましょう。まずは簡単なアンケートに答えてください🌱
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-row" style="margin-bottom: 0;">
+    <div class="avatar">🏙️</div>
+    <div>
+      <div class="chat-time">上京支援センター</div>
+      <div class="bubble">
+        📝 <strong>所要時間：約3分</strong><br>
+        全部で <strong>6問</strong> です。<br>
+        回答後に、無料の個別面談をご予約いただけます！
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Progress -->
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span id="step-label">ステップ 1 / 6</span>
+    <span id="pct-label">0%</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+  <div class="step-dots" id="step-dots"></div>
+</div>
+
+<!-- Questions -->
+<div class="form-section">
+
+  <!-- Q1 -->
+  <div class="question-card active" data-q="1">
+    <div class="q-number">✨ 質問 1</div>
+    <div class="q-title">今、上京についてどのくらい考えていますか？</div>
+    <div class="q-sub">今のあなたの気持ちに一番近いものを選んでください</div>
+    <div class="choices" id="q1-choices">
+      <button class="choice-btn" onclick="selectSingle(this,'q1')">
+        <span class="choice-icon">🔥</span> 本気で考えている・すぐにでも動きたい
+        <span class="choice-check"></span>
+      </button>
+      <button class="choice-btn" onclick="selectSingle(this,'q1')">
+        <span class="choice-icon">🤔</span> 興味はあるけど、まだ迷っている
+        <span class="choice-check"></span>
+      </button>
+      <button class="choice-btn" onclick="selectSingle(this,'q1')">
+        <span class="choice-icon">😰</span> 気になっているが、不安の方が大きい
+        <span class="choice-check"></span>
+      </button>
+      <button class="choice-btn" onclick="selectSingle(this,'q1')">
+        <span class="choice-icon">🌱</span> なんとなく情報収集している段階
+        <span class="choice-check"></span>
+      </button>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-next" id="q1-next" disabled onclick="nextStep()">次へ →</button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question-card" data-q="2">
+    <div class="q-number">✨ 質問 2</div>
+    <div class="q-title">上京を考えている一番の理由は何ですか？</div>
+    <div class="q-sub">一番近いものをひとつ選んでください</div>
+    <div class="choices" id="q2-choices">
+      <button class="choice-btn" onclick="selectSingle(this,'q2')">
+        <span class="choice-icon">💼</span> 仕事・キャリアのため
+        <span class="choice-check"></span>
+      </button>
+      <button class="choice-btn" onclick="selectSingle(this,'q2')">
+        <span class="choice-icon">🎓</span> 進学・スキルアップのため
+        <span class="choice-check"></span>
+      </button>
+      <button class="choice-btn" onclick="selectSingle(this,'q2')">
+        <span class="choice-icon">🌈</span> 新しい環境・自分を変えたい
+        <span class="choice-check"></span>
+      </button>
+      <button class="choice-btn" onclick="selectSingle(this,'q2')">
+        <span class="choice-icon">👫</span> 人間関係・恋愛・結婚
+        <span class="choice-check"></span>
+      </button>
+      <button class="choice-btn" onclick="selectSingle(this,'q2')">
+        <span class="choice-icon">💡</span> その他
+        <span class="choice-check"></span>
+      </button>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-back" onclick="prevStep()">← 戻る</button>
+      <button class="btn-next" id="q2-next" disabled onclick="nextStep()">次へ →</button>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question-card" data-q="3">
+    <div class="q-number">✨ 質問 3</div>
+    <div class="q-title">上京に対して不安に感じることは？</div>
+    <div class="q-sub multi-hint">※ 複数選択できます</div>
+    <div class="choices" id="q3-choices">
+      <button class="choice-btn multi" onclick="selectMulti(this,'q3')">
+        <span class="choice-icon">🏠</span> 住まい探し・家賃が高そう
+        <span class="choice-check">□</span>
+      </button>
+      <button class="choice-btn multi" onclick="selectMulti(this,'q3')">
+        <span class="choice-icon">💰</span> お金・生活費が心配
+        <span class="choice-check">□</span>
+      </button>
+      <button class="choice-btn multi" onclick="selectMulti(this,'q3')">
+        <span class="choice-icon">👥</span> 知り合いがいない・孤独
+        <span class="choice-check">□</span>
+      </button>
+      <button class="choice-btn multi" onclick="selectMulti(this,'q3')">
+        <span class="choice-icon">🗺️</span> 仕事が見つかるか不安
+        <span class="choice-check">□</span>
+      </button>
+      <button class="choice-btn multi" onclick="selectMulti(this,'q3')">
+        <span class="choice-icon">🌃</span> 東京の生活に慣れるか心配
+        <span class="choice-check">□</span>
+      </button>
+      <button class="choice-btn multi" onclick="selectMulti(this,'q3')">
+        <span class="choice-icon">😊</span> 特に不安はない
+        <span class="choice-check">□</span>
+      </button>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-back" onclick="prevStep()">← 戻る</button>
+      <button class="btn-next" id="q3-next" disabled onclick="nextStep()">次へ →</button>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question-card" data-q="4">
+    <div class="q-number">✨ 質問 4</div>
+    <div class="q-title">上京を考えている時期はいつ頃ですか？</div>
+    <div class="q-sub">だいたいの目安で大丈夫です</div>
+    <div class="choices" id="q4-choices">
+      <button class="choice-btn" onclick="selectSingle(this,'q4')">
+        <span class="choice-icon">🚀</span> 3ヶ月以内
+        <span class="choice-check"></span>
+      </button>
+      <button class="choice-btn" onclick="selectSingle(this,'q4')">
+        <span class="choice-icon">📅</span> 半年以内
+        <span class="choice-check"></span>
+      </button>
+      <button class="choice-btn" onclick="selectSingle(this,'q4')">
+        <span class="choice-icon">🗓️</span> 1年以内
+        <span class="choice-check"></span>
+      </button>
+      <button class="choice-btn" onclick="selectSingle(this,'q4')">
+        <span class="choice-icon">🌿</span> まだ決まっていない
+        <span class="choice-check"></span>
+      </button>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-back" onclick="prevStep()">← 戻る</button>
+      <button class="btn-next" id="q4-next" disabled onclick="nextStep()">次へ →</button>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question-card" data-q="5">
+    <div class="q-number">✨ 質問 5</div>
+    <div class="q-title">現在お住まいの都道府県を教えてください</div>
+    <div class="q-sub">より近い情報をお届けするために教えてください</div>
+    <select class="styled-select" id="q5-select" onchange="checkQ5()">
+      <option value="">都道府県を選択してください</option>
+      <option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option>
+      <option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option>
+      <option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option>
+      <option>神奈川県</option><option>新潟県</option><option>富山県</option><option>石川県</option>
+      <option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option>
+      <option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option>
+      <option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option>
+      <option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option>
+      <option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option>
+      <option>愛媛県</option><option>高知県</option><option>福岡県</option><option>佐賀県</option>
+      <option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option>
+      <option>鹿児島県</option><option>沖縄県</option>
+    </select>
+    <div class="nav-btns">
+      <button class="btn-back" onclick="prevStep()">← 戻る</button>
+      <button class="btn-next" id="q5-next" disabled onclick="nextStep()">次へ →</button>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question-card" data-q="6">
+    <div class="q-number">✨ 質問 6</div>
+    <div class="q-title">スタッフへのメッセージ・聞きたいことがあれば教えてください</div>
+    <div class="q-sub">任意です。なんでもお気軽にどうぞ😊</div>
+    <div class="text-input-wrap">
+      <textarea id="q6-text" maxlength="200" placeholder="例：住まい探しのコツを教えてほしい、仕事はどうやって見つければいい？など" oninput="countChars()"></textarea>
+      <div class="char-count"><span id="char-count">0</span> / 200文字</div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-back" onclick="prevStep()">← 戻る</button>
+      <button class="btn-next" onclick="submitForm()" style="background: var(--orange); box-shadow: 0 4px 16px rgba(255,140,66,0.4);">
+        📩 送信して面談予約へ
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Complete screen -->
+<div id="complete-screen">
+  <div class="complete-card">
+    <span class="complete-icon">🎉</span>
+    <h2>ありがとうございます！</h2>
+    <p>アンケートが完了しました。<br>あなたの回答をもとに、<strong>専任スタッフ</strong>が丁寧にサポートします。</p>
+    <div class="complete-summary" id="summary-box"></div>
+    <p style="font-size:13px; color: var(--green-dark); font-weight:700; margin-bottom:12px;">
+      📅 無料の個別面談をご予約ください
+    </p>
+    <p style="font-size:12px; color: var(--gray-dark); margin-bottom:16px;">
+      オンライン・電話どちらでも対応できます。<br>所要時間は約30分です。
+    </p>
+    <a href="reservation.html" class="btn-appointment">🗓️ 無料面談を予約する</a>
+  </div>
+</div>
+
+<!-- Floating mascot -->
+<div class="mascot-float">
+  <div class="mascot-bubble" id="mascot-msg">応援してるよ！✨</div>
+  <div class="mascot-face">🏙️</div>
+</div>
+
+<script>
+  const TOTAL = 6;
+  let currentStep = 1;
+  const answers = { q1: null, q2: null, q3: [], q4: null, q5: '', q6: '' };
+  const mascotMessages = [
+    '応援してるよ！✨',
+    'ありがとう😊',
+    '不安は一緒に解決しよう！',
+    'もう少しだよ〜🌱',
+    'どこから来たの？',
+    '最後の質問だよ！🎉'
+  ];
+
+  // Build step dots
+  const dotsEl = document.getElementById('step-dots');
+  for (let i = 1; i <= TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'step-dot' + (i === 1 ? ' active' : '');
+    d.id = 'dot-' + i;
+    dotsEl.appendChild(d);
+  }
+
+  function updateProgress() {
+    const pct = Math.round(((currentStep - 1) / TOTAL) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('step-label').textContent = `ステップ ${currentStep} / ${TOTAL}`;
+    document.getElementById('pct-label').textContent = pct + '%';
+    for (let i = 1; i <= TOTAL; i++) {
+      const d = document.getElementById('dot-' + i);
+      d.className = 'step-dot' + (i < currentStep ? ' done' : i === currentStep ? ' active' : '');
+    }
+    document.getElementById('mascot-msg').textContent = mascotMessages[currentStep - 1];
+  }
+
+  function selectSingle(btn, qName) {
+    const btns = btn.parentElement.querySelectorAll('.choice-btn');
+    btns.forEach(b => { b.classList.remove('selected'); b.querySelector('.choice-check').textContent = ''; });
+    btn.classList.add('selected');
+    btn.querySelector('.choice-check').textContent = '✓';
+    answers[qName] = btn.querySelector('.choice-icon').nextSibling.textContent.trim();
+    document.getElementById(qName + '-next').disabled = false;
+  }
+
+  const multiSelected = {};
+  function selectMulti(btn, qName) {
+    if (!multiSelected[qName]) multiSelected[qName] = new Set();
+    if (btn.classList.contains('selected')) {
+      btn.classList.remove('selected');
+      btn.querySelector('.choice-check').textContent = '□';
+      multiSelected[qName].delete(btn.querySelector('.choice-icon').nextSibling.textContent.trim());
+    } else {
+      btn.classList.add('selected');
+      btn.querySelector('.choice-check').textContent = '✓';
+      multiSelected[qName].add(btn.querySelector('.choice-icon').nextSibling.textContent.trim());
+    }
+    answers[qName] = [...multiSelected[qName]];
+    document.getElementById(qName + '-next').disabled = multiSelected[qName].size === 0;
+  }
+
+  function checkQ5() {
+    answers.q5 = document.getElementById('q5-select').value;
+    document.getElementById('q5-next').disabled = !answers.q5;
+  }
+
+  function countChars() {
+    const txt = document.getElementById('q6-text').value;
+    document.getElementById('char-count').textContent = txt.length;
+    answers.q6 = txt;
+  }
+
+  function nextStep() {
+    document.querySelector(`[data-q="${currentStep}"]`).classList.remove('active');
+    currentStep++;
+    document.querySelector(`[data-q="${currentStep}"]`).classList.add('active');
+    document.querySelector(`[data-q="${currentStep}"]`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateProgress();
+  }
+
+  function prevStep() {
+    document.querySelector(`[data-q="${currentStep}"]`).classList.remove('active');
+    currentStep--;
+    document.querySelector(`[data-q="${currentStep}"]`).classList.add('active');
+    updateProgress();
+  }
+
+  function submitForm() {
+    answers.q6 = document.getElementById('q6-text').value;
+    document.querySelector('[data-q="6"]').classList.remove('active');
+    document.getElementById('progress-fill').style.width = '100%';
+    document.getElementById('step-label').textContent = '完了！';
+    document.getElementById('pct-label').textContent = '100%';
+    for (let i = 1; i <= TOTAL; i++) document.getElementById('dot-' + i).className = 'step-dot done';
+    document.getElementById('mascot-msg').textContent = '完了！お疲れ様🎉';
+
+    // Build summary
+    const summaryBox = document.getElementById('summary-box');
+    summaryBox.innerHTML = `
+      <h3>📋 あなたの回答まとめ</h3>
+      <div class="summary-item">${answers.q1 || '—'}<span>上京への気持ち</span></div>
+      <div class="summary-item">${answers.q2 || '—'}<span>上京の理由</span></div>
+      <div class="summary-item">${Array.isArray(answers.q3) && answers.q3.length ? answers.q3.join('、') : '—'}<span>不安なこと</span></div>
+      <div class="summary-item">${answers.q4 || '—'}<span>上京を考えている時期</span></div>
+      <div class="summary-item">${answers.q5 || '—'}<span>現在の住まい</span></div>
+    `;
+    document.getElementById('complete-screen').style.display = 'block';
+    document.getElementById('complete-screen').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  updateProgress();
+</script>
+</body>
+</html>

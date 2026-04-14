@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料面談予約｜上京支援センター</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #06C755;
+    --green-light: #e8faf0;
+    --green-dark: #049a41;
+    --orange: #FF8C42;
+    --orange-light: #fff3ea;
+    --cream: #FFF9F0;
+    --warm-white: #FFFDF9;
+    --brown: #5C3D2E;
+    --brown-light: #8B6355;
+    --gray: #F5F0EB;
+    --gray-mid: #DDD5CC;
+    --gray-dark: #9E8E83;
+    --text: #3D2B1F;
+    --shadow: 0 4px 20px rgba(92,61,46,0.10);
+    --shadow-lg: 0 8px 32px rgba(92,61,46,0.14);
+    --radius: 20px;
+  }
+
+  body {
+    font-family: 'Zen Maru Gothic', 'M PLUS Rounded 1c', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+
+  /* ---- Header ---- */
+  .header {
+    background: var(--green);
+    padding: 14px 20px;
+    display: flex; align-items: center; gap: 12px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(6,199,85,0.25);
+  }
+  .header-icon { width: 42px; height: 42px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .header-info { color: white; }
+  .header-info h1 { font-size: 15px; font-weight: 700; line-height: 1.3; }
+  .header-info p  { font-size: 11px; opacity: 0.88; margin-top: 1px; }
+  .header-back {
+    margin-left: auto;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .header-back:hover { background: rgba(255,255,255,0.3); }
+
+  /* ---- Hero banner ---- */
+  .hero {
+    background: linear-gradient(135deg, var(--green) 0%, #2DD4A0 100%);
+    padding: 28px 20px 36px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -20px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .hero h2 { font-size: 22px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; }
+  .hero p  { font-size: 13px; opacity: 0.92; line-height: 1.7; }
+  .hero-points {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .hero-point {
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  /* wave */
+  .hero-wave { display: block; margin-top: -1px; }
+
+  /* ---- Container ---- */
+  .container { max-width: 600px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---- Section title ---- */
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brown);
+    margin: 24px 0 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: var(--gray-mid);
+    border-radius: 2px;
+  }
+
+  /* ---- Method selector ---- */
+  .method-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .method-card {
+    border: 2.5px solid var(--gray-mid);
+    border-radius: 16px;
+    padding: 16px 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+  }
+  .method-card:hover { border-color: var(--green); background: var(--green-light); }
+  .method-card.selected { border-color: var(--green); background: var(--green-light); }
+  .method-icon { font-size: 30px; margin-bottom: 8px; }
+  .method-label { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .method-sub   { font-size: 11px; color: var(--gray-dark); line-height: 1.5; }
+  .method-card.selected .method-label { color: var(--green-dark); }
+
+  /* ---- Calendar ---- */
+  .calendar-wrap {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .cal-header {
+    background: var(--green);
+    color: white;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px;
+  }
+  .cal-header h3 { font-size: 16px; font-weight: 700; }
+  .cal-nav-btn {
+    background: rgba(255,255,255,0.25);
+    border: none;
+    color: white;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    font-family: inherit;
+  }
+  .cal-nav-btn:hover { background: rgba(255,255,255,0.4); }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+  }
+  .cal-dow {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 10px 4px 8px;
+    color: var(--gray-dark);
+  }
+  .cal-dow:first-child { color: #E05252; }
+  .cal-dow:last-child  { color: #5271E0; }
+  .cal-day {
+    text-align: center;
+    padding: 10px 4px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 2px;
+    transition: all 0.15s;
+    position: relative;
+    font-weight: 500;
+  }
+  .cal-day:hover:not(.disabled):not(.empty) { background: var(--green-light); color: var(--green-dark); }
+  .cal-day.selected { background: var(--green); color: white; font-weight: 700; }
+  .cal-day.today { font-weight: 700; color: var(--green-dark); }
+  .cal-day.today::after { content: '•'; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); font-size: 8px; color: var(--green); }
+  .cal-day.disabled { color: var(--gray-mid); cursor: not-allowed; }
+  .cal-day.empty { cursor: default; }
+  .cal-day.sunday  { color: #E05252; }
+  .cal-day.saturday { color: #5271E0; }
+  .cal-day.selected.sunday,
+  .cal-day.selected.saturday { color: white; }
+  .cal-day .avail-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--orange);
+    position: absolute;
+    top: 4px; right: 4px;
+  }
+
+  /* ---- Time slots ---- */
+  .time-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .time-btn {
+    border: 2.5px solid var(--gray-mid);
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    background: white;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    transition: all 0.2s;
+    position: relative;
+  }
+  .time-btn:hover:not(.full) { border-color: var(--green); background: var(--green-light); color: var(--green-dark); }
+  .time-btn.selected { border-color: var(--green); background: var(--green); color: white; }
+  .time-btn.full { background: var(--gray); color: var(--gray-dark); cursor: not-allowed; border-color: var(--gray); }
+  .time-btn .full-label { font-size: 10px; color: #E05252; display: block; margin-top: 2px; }
+  .time-btn.selected .full-label { color: rgba(255,255,255,0.7); }
+
+  /* ---- Form fields ---- */
+  .form-group { margin-bottom: 16px; }
+  .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+  .form-label .required {
+    background: #E05252;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+  }
+  .form-label .optional {
+    background: var(--gray-mid);
+    color: var(--gray-dark);
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+  }
+  .form-input {
+    width: 100%;
+    border: 2.5px solid var(--gray-mid);
+    border-radius: 14px;
+    padding: 13px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    background: white;
+  }
+  .form-input:focus { border-color: var(--green); }
+  .form-input::placeholder { color: var(--gray-dark); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  /* ---- Confirm card ---- */
+  .confirm-card {
+    background: var(--green-light);
+    border-radius: var(--radius);
+    padding: 20px;
+    border: 2px solid rgba(6,199,85,0.25);
+  }
+  .confirm-card h3 { font-size: 14px; font-weight: 700; color: var(--green-dark); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+  .confirm-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 0; border-bottom: 1px dashed rgba(6,199,85,0.3); font-size: 13px; }
+  .confirm-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .confirm-row .label { color: var(--gray-dark); flex-shrink: 0; margin-right: 12px; }
+  .confirm-row .value { font-weight: 700; color: var(--text); text-align: right; }
+
+  /* ---- Submit button ---- */
+  .btn-submit {
+    width: 100%;
+    padding: 17px;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 6px 24px rgba(6,199,85,0.4);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-top: 20px;
+  }
+  .btn-submit:hover { background: var(--green-dark); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(6,199,85,0.45); }
+  .btn-submit:disabled { background: var(--gray-mid); box-shadow: none; transform: none; cursor: not-allowed; }
+
+  .privacy-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray-dark);
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  /* ---- Complete ---- */
+  #complete-view { display: none; }
+  .complete-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 36px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    margin: 20px 0;
+    animation: popIn 0.5s ease;
+  }
+  @keyframes popIn {
+    0%   { opacity: 0; transform: scale(0.9); }
+    60%  { transform: scale(1.03); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .complete-icon { font-size: 70px; display: block; margin-bottom: 16px; }
+  .complete-card h2 { font-size: 22px; font-weight: 700; color: var(--green-dark); margin-bottom: 10px; }
+  .complete-card p  { font-size: 14px; line-height: 1.75; color: var(--brown-light); }
+  .reservation-detail {
+    background: var(--green-light);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+  }
+  .reservation-detail h3 { font-size: 13px; font-weight: 700; color: var(--green-dark); margin-bottom: 12px; }
+  .detail-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 14px; }
+  .detail-item .di-icon { font-size: 20px; }
+  .detail-item .di-info { font-weight: 700; }
+  .detail-item .di-sub  { font-size: 11px; color: var(--gray-dark); }
+  .btn-line-return {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(6,199,85,0.4);
+    text-align: center;
+  }
+  .btn-line-return:hover { background: var(--green-dark); }
+  .btn-add-cal {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    background: white;
+    color: var(--green-dark);
+    border: 2px solid var(--green);
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+    transition: all 0.2s;
+  }
+  .btn-add-cal:hover { background: var(--green-light); }
+
+  /* ---- Floating CTA (mobile) ---- */
+  .floating-cta {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: white;
+    padding: 12px 20px 20px;
+    box-shadow: 0 -4px 20px rgba(92,61,46,0.12);
+    display: none;
+    z-index: 90;
+  }
+  .floating-cta .mini-confirm {
+    font-size: 12px;
+    color: var(--green-dark);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  /* ---- Step indicator ---- */
+  .steps-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 20px 0 4px;
+  }
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    position: relative;
+  }
+  .step-circle {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--gray-mid);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .step-circle.active  { background: var(--green); box-shadow: 0 0 0 4px var(--green-light); }
+  .step-circle.done    { background: var(--green-dark); }
+  .step-item-label { font-size: 10px; color: var(--gray-dark); font-weight: 700; }
+  .step-item-label.active { color: var(--green-dark); }
+  .step-line {
+    height: 2px;
+    background: var(--gray-mid);
+    flex: 1;
+    margin-bottom: 14px;
+    transition: background 0.3s;
+  }
+  .step-line.done { background: var(--green); }
+
+  /* ---- Responsive ---- */
+  @media (min-width: 600px) {
+    .hero h2 { font-size: 26px; }
+    .hero { padding: 36px 40px 48px; }
+    .container { padding: 0 24px; }
+    .time-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (min-width: 900px) {
+    body { background: #EEE9E0; }
+    .header { padding: 16px 40px; }
+    .container { max-width: 560px; margin: 0 auto; padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-icon">🏙️</div>
+  <div class="header-info">
+    <h1>上京支援センター</h1>
+    <p>無料面談のご予約</p>
+  </div>
+  <button class="header-back" onclick="history.back()">← 戻る</button>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">🎁 完全無料・オンライン対応</div>
+  <h2>あなたの上京を<br>一緒に考えます 🌱</h2>
+  <p>専任スタッフが、住まい・仕事・生活費など<br>気になることを丁寧にご相談します。</p>
+  <div class="hero-points">
+    <div class="hero-point">⏱️ 約30分</div>
+    <div class="hero-point">💬 オンライン or 電話</div>
+    <div class="hero-point">🔒 完全無料</div>
+  </div>
+</div>
+<svg class="hero-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 40" preserveAspectRatio="none" style="display:block;height:30px;width:100%;background:var(--cream)">
+  <path fill="#2DD4A0" d="M0,32L60,26.7C120,21,240,11,360,10.7C480,11,600,21,720,24C840,27,960,21,1080,16C1200,11,1320,5,1380,2.7L1440,0L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"/>
+</svg>
+
+<!-- Step indicator -->
+<div class="container">
+  <div class="steps-row" id="steps-row">
+    <div class="step-item">
+      <div class="step-circle active" id="sc1">1</div>
+      <div class="step-item-label active">方法</div>
+    </div>
+    <div class="step-line" id="sl1"></div>
+    <div class="step-item">
+      <div class="step-circle" id="sc2">2</div>
+      <div class="step-item-label" id="sl2-label">日時</div>
+    </div>
+    <div class="step-line" id="sl2"></div>
+    <div class="step-item">
+      <div class="step-circle" id="sc3">3</div>
+      <div class="step-item-label" id="sl3-label">情報</div>
+    </div>
+    <div class="step-line" id="sl3"></div>
+    <div class="step-item">
+      <div class="step-circle" id="sc4">4</div>
+      <div class="step-item-label" id="sl4-label">確認</div>
+    </div>
+  </div>
+</div>
+
+<!-- Main form -->
+<div id="form-view">
+
+<!-- STEP 1: Method -->
+<div id="step1" class="container">
+  <div class="section-title">📱 面談方法を選んでください</div>
+  <div class="method-cards">
+    <div class="method-card" id="m-online" onclick="selectMethod('online')">
+      <div class="method-icon">💻</div>
+      <div class="method-label">ビデオ面談</div>
+      <div class="method-sub">Zoom / Google Meet<br>自宅から参加できます</div>
+    </div>
+    <div class="method-card" id="m-phone" onclick="selectMethod('phone')">
+      <div class="method-icon">📞</div>
+      <div class="method-label">お電話</div>
+      <div class="method-sub">指定の番号に<br>お電話します</div>
+    </div>
+  </div>
+  <button class="btn-submit" id="step1-next" disabled onclick="goStep(2)">次へ → 日時を選ぶ</button>
+</div>
+
+<!-- STEP 2: Calendar -->
+<div id="step2" class="container" style="display:none;">
+  <div class="section-title">📅 ご希望の日時</div>
+  <div class="calendar-wrap">
+    <div class="cal-header">
+      <button class="cal-nav-btn" onclick="changeMonth(-1)">‹</button>
+      <h3 id="cal-title"></h3>
+      <button class="cal-nav-btn" onclick="changeMonth(1)">›</button>
+    </div>
+    <div class="cal-grid" id="cal-grid">
+      <div class="cal-dow">日</div>
+      <div class="cal-dow">月</div>
+      <div class="cal-dow">火</div>
+      <div class="cal-dow">水</div>
+      <div class="cal-dow">木</div>
+      <div class="cal-dow">金</div>
+      <div class="cal-dow">土</div>
+    </div>
+  </div>
+
+  <div id="timeslot-section" style="display:none; margin-top:20px;">
+    <div class="section-title">⏰ 時間帯</div>
+    <div class="time-grid" id="time-grid"></div>
+  </div>
+
+  <div class="nav-btns" style="display:flex;gap:10px;margin-top:20px;">
+    <button style="padding:14px 20px;border:2px solid var(--gray-mid);border-radius:14px;background:white;font-family:inherit;font-size:14px;font-weight:700;color:var(--brown-light);cursor:pointer;" onclick="goStep(1)">← 戻る</button>
+    <button class="btn-submit" id="step2-next" disabled onclick="goStep(3)" style="margin-top:0;flex:1;">次へ → 情報入力</button>
+  </div>
+</div>
+
+<!-- STEP 3: Info -->
+<div id="step3" class="container" style="display:none;">
+  <div class="section-title">👤 お客様情報</div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">お名前 <span class="required">必須</span></label>
+      <input class="form-input" type="text" id="name" placeholder="山田 太郎" oninput="checkStep3()">
+    </div>
+    <div class="form-group">
+      <label class="form-label">年齢 <span class="required">必須</span></label>
+      <input class="form-input" type="number" id="age" placeholder="23" min="15" max="40" oninput="checkStep3()">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">
+      <span id="contact-label">メールアドレス</span> <span class="required">必須</span>
+    </label>
+    <input class="form-input" type="text" id="contact" placeholder="example@email.com" oninput="checkStep3()">
+  </div>
+
+  <div class="form-group" id="phone-group" style="display:none;">
+    <label class="form-label">折り返し電話番号 <span class="required">必須</span></label>
+    <input class="form-input" type="tel" id="phone" placeholder="090-0000-0000" oninput="checkStep3()">
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">現在のお住まい <span class="optional">任意</span></label>
+    <input class="form-input" type="text" id="location" placeholder="北海道 札幌市">
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">相談したいこと <span class="optional">任意</span></label>
+    <textarea class="form-input" id="memo" rows="3" placeholder="例：住まい探し、仕事探し、上京のタイミングなど" style="resize:none;"></textarea>
+  </div>
+
+  <div class="nav-btns" style="display:flex;gap:10px;">
+    <button style="padding:14px 20px;border:2px solid var(--gray-mid);border-radius:14px;background:white;font-family:inherit;font-size:14px;font-weight:700;color:var(--brown-light);cursor:pointer;" onclick="goStep(2)">← 戻る</button>
+    <button class="btn-submit" id="step3-next" disabled onclick="goStep(4)" style="margin-top:0;flex:1;">次へ → 確認する</button>
+  </div>
+</div>
+
+<!-- STEP 4: Confirm -->
+<div id="step4" class="container" style="display:none;">
+  <div class="section-title">✅ 予約内容の確認</div>
+  <div class="confirm-card">
+    <h3>📋 ご予約内容</h3>
+    <div class="confirm-row"><span class="label">面談方法</span><span class="value" id="cf-method">—</span></div>
+    <div class="confirm-row"><span class="label">日時</span><span class="value" id="cf-datetime">—</span></div>
+    <div class="confirm-row"><span class="label">お名前</span><span class="value" id="cf-name">—</span></div>
+    <div class="confirm-row"><span class="label">年齢</span><span class="value" id="cf-age">—</span></div>
+    <div class="confirm-row"><span class="label">連絡先</span><span class="value" id="cf-contact">—</span></div>
+    <div class="confirm-row" id="cf-phone-row" style="display:none;"><span class="label">電話番号</span><span class="value" id="cf-phone">—</span></div>
+    <div class="confirm-row"><span class="label">住まい</span><span class="value" id="cf-location">—</span></div>
+    <div class="confirm-row"><span class="label">相談内容</span><span class="value" id="cf-memo" style="max-width:200px;word-break:break-all;">—</span></div>
+  </div>
+
+  <button class="btn-submit" onclick="submitReservation()">🎉 この内容で予約を確定する</button>
+  <p class="privacy-note">🔒 ご入力いただいた情報は、面談のご連絡のみに使用します。<br>個人情報は厳重に管理いたします。</p>
+
+  <div style="margin-top:10px;">
+    <button style="display:block;width:100%;padding:13px;background:white;color:var(--brown-light);border:2px solid var(--gray-mid);border-radius:14px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;" onclick="goStep(3)">← 情報を修正する</button>
+  </div>
+</div>
+
+</div><!-- /form-view -->
+
+<!-- Complete view -->
+<div id="complete-view">
+  <div class="container">
+    <div class="complete-card">
+      <span class="complete-icon">🎊</span>
+      <h2>ご予約が完了しました！</h2>
+      <p>担当スタッフが確認後、<strong>24時間以内</strong>にご連絡いたします。</p>
+      <div class="reservation-detail">
+        <h3>📅 ご予約内容</h3>
+        <div class="detail-item">
+          <span class="di-icon">💻</span>
+          <div><div class="di-info" id="rs-method">—</div><div class="di-sub">面談方法</div></div>
+        </div>
+        <div class="detail-item">
+          <span class="di-icon">🗓️</span>
+          <div><div class="di-info" id="rs-datetime">—</div><div class="di-sub">日時</div></div>
+        </div>
+        <div class="detail-item">
+          <span class="di-icon">👤</span>
+          <div><div class="di-info" id="rs-name">—</div><div class="di-sub">お名前</div></div>
+        </div>
+      </div>
+      <p style="font-size:13px; color:var(--green-dark); font-weight:700; margin-bottom:12px;">
+        ✉️ ご登録の連絡先に確認メッセージをお送りします
+      </p>
+      <a href="#" class="btn-line-return">🏠 LINEトークに戻る</a>
+      <button class="btn-add-cal" onclick="alert('カレンダーへの追加機能は実装予定です')">📅 カレンダーに追加する</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---- State ----
+  const state = {
+    method: null,
+    date: null,
+    time: null,
+    name: '', age: '', contact: '', phone: '', location: '', memo: ''
+  };
+
+  let calYear, calMonth;
+  const today = new Date();
+
+  // ---- Step nav ----
+  function goStep(n) {
+    [1,2,3,4].forEach(i => document.getElementById('step'+i).style.display = i===n ? 'block' : 'none');
+    updateStepUI(n);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (n === 2) renderCalendar();
+    if (n === 4) fillConfirm();
+  }
+
+  function updateStepUI(n) {
+    for (let i = 1; i <= 4; i++) {
+      const sc = document.getElementById('sc'+i);
+      sc.className = 'step-circle' + (i < n ? ' done' : i === n ? ' active' : '');
+      if (i < n) sc.textContent = '✓';
+      else sc.textContent = i;
+      const lbl = document.getElementById('sl'+i+'-label');
+      if (lbl) lbl.className = 'step-item-label' + (i === n ? ' active' : '');
+    }
+    for (let i = 1; i <= 3; i++) {
+      const line = document.getElementById('sl'+i);
+      if (line) line.className = 'step-line' + (i < n ? ' done' : '');
+    }
+  }
+
+  // ---- Method ----
+  function selectMethod(m) {
+    state.method = m;
+    document.getElementById('m-online').classList.toggle('selected', m === 'online');
+    document.getElementById('m-phone').classList.toggle('selected', m === 'phone');
+    document.getElementById('step1-next').disabled = false;
+    // update contact label in step 3
+    document.getElementById('contact-label').textContent = m === 'phone' ? 'メールアドレスまたはLINE ID' : 'メールアドレス';
+    document.getElementById('phone-group').style.display = m === 'phone' ? 'block' : 'none';
+  }
+
+  // ---- Calendar ----
+  function initCal() {
+    calYear  = today.getFullYear();
+    calMonth = today.getMonth();
+  }
+  initCal();
+
+  const fullDays = new Set([5, 12, 19]);
+  const timeSlots = [
+    { label: '10:00', full: false },
+    { label: '11:00', full: false },
+    { label: '13:00', full: false },
+    { label: '14:00', full: true  },
+    { label: '15:00', full: false },
+    { label: '16:00', full: false },
+    { label: '17:00', full: false },
+    { label: '18:00', full: false },
+    { label: '19:00', full: false },
+  ];
+
+  function changeMonth(dir) {
+    calMonth += dir;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    if (calMonth < 0)  { calMonth = 11; calYear--; }
+    renderCalendar();
+  }
+
+  function renderCalendar() {
+    const monthNames = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+    document.getElementById('cal-title').textContent = `${calYear}年 ${monthNames[calMonth]}`;
+
+    const grid = document.getElementById('cal-grid');
+    // keep headers
+    while (grid.children.length > 7) grid.removeChild(grid.lastChild);
+
+    const firstDay = new Date(calYear, calMonth, 1).getDay();
+    const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+    for (let i = 0; i < firstDay; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day empty';
+      grid.appendChild(el);
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(calYear, calMonth, d);
+      const dow = date.getDay();
+      const isPast = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      const el = document.createElement('div');
+      el.className = 'cal-day';
+      if (dow === 0) el.classList.add('sunday');
+      if (dow === 6) el.classList.add('saturday');
+      if (isPast)    el.classList.add('disabled');
+
+      const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      if (state.date === dateStr) el.classList.add('selected');
+
+      if (date.toDateString() === today.toDateString()) el.classList.add('today');
+
+      if (!isPast && !fullDays.has(d)) {
+        const dot = document.createElement('div');
+        dot.className = 'avail-dot';
+        el.appendChild(dot);
+      }
+
+      el.appendChild(document.createTextNode(d));
+
+      if (!isPast) {
+        el.addEventListener('click', () => selectDate(dateStr, el));
+      }
+      grid.appendChild(el);
+    }
+  }
+
+  function selectDate(dateStr, el) {
+    state.date = dateStr;
+    state.time = null;
+    document.querySelectorAll('.cal-day.selected').forEach(e => e.classList.remove('selected'));
+    el.classList.add('selected');
+    renderTimeSlots();
+    document.getElementById('timeslot-section').style.display = 'block';
+    document.getElementById('step2-next').disabled = true;
+  }
+
+  function renderTimeSlots() {
+    const grid = document.getElementById('time-grid');
+    grid.innerHTML = '';
+    timeSlots.forEach(slot => {
+      const btn = document.createElement('button');
+      btn.className = 'time-btn' + (slot.full ? ' full' : '');
+      btn.innerHTML = slot.full
+        ? `${slot.label}<span class="full-label">満員</span>`
+        : slot.label;
+      if (!slot.full) btn.addEventListener('click', () => selectTime(slot.label, btn));
+      grid.appendChild(btn);
+    });
+  }
+
+  function selectTime(t, btn) {
+    state.time = t;
+    document.querySelectorAll('.time-btn.selected').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('step2-next').disabled = false;
+  }
+
+  // ---- Step 3 ----
+  function checkStep3() {
+    const name    = document.getElementById('name').value.trim();
+    const age     = document.getElementById('age').value.trim();
+    const contact = document.getElementById('contact').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const needPhone = state.method === 'phone';
+    const ok = name && age && contact && (!needPhone || phone);
+    document.getElementById('step3-next').disabled = !ok;
+  }
+
+  // ---- Confirm ----
+  function fillConfirm() {
+    const methodLabel = state.method === 'online' ? '💻 ビデオ面談（Zoom/Meet）' : '📞 お電話';
+    const [y,m,d] = state.date.split('-');
+    const dateLabel = `${y}年${parseInt(m)}月${parseInt(d)}日 ${state.time}〜`;
+    document.getElementById('cf-method').textContent  = methodLabel;
+    document.getElementById('cf-datetime').textContent = dateLabel;
+    document.getElementById('cf-name').textContent    = document.getElementById('name').value;
+    document.getElementById('cf-age').textContent     = document.getElementById('age').value + '歳';
+    document.getElementById('cf-contact').textContent = document.getElementById('contact').value;
+    document.getElementById('cf-location').textContent = document.getElementById('location').value || '未入力';
+    document.getElementById('cf-memo').textContent    = document.getElementById('memo').value || '未入力';
+    if (state.method === 'phone') {
+      document.getElementById('cf-phone-row').style.display = 'flex';
+      document.getElementById('cf-phone').textContent = document.getElementById('phone').value;
+    }
+    // For complete view
+    document.getElementById('rs-method').textContent   = methodLabel;
+    document.getElementById('rs-datetime').textContent = dateLabel;
+    document.getElementById('rs-name').textContent     = document.getElementById('name').value;
+  }
+
+  // ---- Submit ----
+  function submitReservation() {
+    document.getElementById('form-view').style.display = 'none';
+    document.getElementById('complete-view').style.display = 'block';
+    // Update step indicators to all done
+    for (let i = 1; i <= 4; i++) {
+      const sc = document.getElementById('sc'+i);
+      sc.className = 'step-circle done';
+      sc.textContent = '✓';
+    }
+    for (let i = 1; i <= 3; i++) {
+      const line = document.getElementById('sl'+i);
+      if (line) line.className = 'step-line done';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ---- Init ----
+  goStep(1);
+</script>
+</body>
+</html>
