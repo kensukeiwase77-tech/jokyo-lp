@@ -682,6 +682,19 @@
 </div>
 
 <script>
+  // ============================================================
+  // エルメ連携設定 — URLが確定したらここだけ書き換えてください
+  // ============================================================
+  const ELME_CONFIG = {
+    // エルメの予約メニューURL（設定後はこのページをエルメURLに差し替え可）
+    bookingUrl: '',
+    // LINE公式アカウントのURL（例: https://lin.ee/XXXXXXX）
+    lineAccountUrl: '',
+    // エルメWebhookURL（予約データ送信用 / 不要なら空文字のまま）
+    webhookUrl: '',
+  };
+  // ============================================================
+
   // ---- State ----
   const state = {
     method: null,
@@ -867,10 +880,37 @@
   }
 
   // ---- Submit ----
-  function submitReservation() {
+  async function submitReservation() {
+    // エルメWebhookへ送信（URLが設定されている場合のみ）
+    if (ELME_CONFIG.webhookUrl) {
+      try {
+        const [y, m, d] = state.date.split('-');
+        await fetch(ELME_CONFIG.webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            面談方法:   state.method === 'online' ? 'ビデオ面談' : 'お電話',
+            日付:       `${y}年${parseInt(m)}月${parseInt(d)}日`,
+            時間:       state.time,
+            名前:       document.getElementById('name').value,
+            年齢:       document.getElementById('age').value,
+            連絡先:     document.getElementById('contact').value,
+            電話番号:   document.getElementById('phone').value,
+            住まい:     document.getElementById('location').value,
+            相談内容:   document.getElementById('memo').value,
+          }),
+        });
+      } catch (e) {
+        console.warn('Webhook送信エラー:', e);
+      }
+    }
+
+    // LINEトークに戻るボタンのURLを設定
+    const lineBtn = document.querySelector('.btn-line-return');
+    if (ELME_CONFIG.lineAccountUrl) lineBtn.href = ELME_CONFIG.lineAccountUrl;
+
     document.getElementById('form-view').style.display = 'none';
     document.getElementById('complete-view').style.display = 'block';
-    // Update step indicators to all done
     for (let i = 1; i <= 4; i++) {
       const sc = document.getElementById('sc'+i);
       sc.className = 'step-circle done';

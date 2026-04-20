@@ -699,7 +699,7 @@
     <p style="font-size:12px; color: var(--gray-dark); margin-bottom:16px;">
       オンライン・電話どちらでも対応できます。<br>所要時間は約30分です。
     </p>
-    <a href="reservation.html" class="btn-appointment">🗓️ 無料面談を予約する</a>
+    <a href="#" id="booking-link" class="btn-appointment">🗓️ 無料面談を予約する</a>
   </div>
 </div>
 
@@ -710,6 +710,19 @@
 </div>
 
 <script>
+  // ============================================================
+  // エルメ連携設定 — URLが確定したらここだけ書き換えてください
+  // ============================================================
+  const ELME_CONFIG = {
+    // エルメの予約メニューURL（例: https://lmsg.jp/XXXX/booking/YYYY）
+    bookingUrl: 'reservation.html',
+    // エルメのWebhookURL（フォームデータ送信用 / 不要なら空文字のまま）
+    webhookUrl: '',
+    // LINE公式アカウントのURL（例: https://lin.ee/XXXXXXX）
+    lineAccountUrl: '',
+  };
+  // ============================================================
+
   const TOTAL = 6;
   let currentStep = 1;
   const answers = { q1: null, q2: null, q3: [], q4: null, q5: '', q6: '' };
@@ -794,7 +807,7 @@
     updateProgress();
   }
 
-  function submitForm() {
+  async function submitForm() {
     answers.q6 = document.getElementById('q6-text').value;
     document.querySelector('[data-q="6"]').classList.remove('active');
     document.getElementById('progress-fill').style.width = '100%';
@@ -802,6 +815,30 @@
     document.getElementById('pct-label').textContent = '100%';
     for (let i = 1; i <= TOTAL; i++) document.getElementById('dot-' + i).className = 'step-dot done';
     document.getElementById('mascot-msg').textContent = '完了！お疲れ様🎉';
+
+    // エルメWebhookへ送信（URLが設定されている場合のみ）
+    if (ELME_CONFIG.webhookUrl) {
+      try {
+        await fetch(ELME_CONFIG.webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            上京への気持ち: answers.q1,
+            上京の理由:     answers.q2,
+            不安なこと:     Array.isArray(answers.q3) ? answers.q3.join('、') : '',
+            上京時期:       answers.q4,
+            現在の住まい:   answers.q5,
+            メッセージ:     answers.q6,
+          }),
+        });
+      } catch (e) {
+        // 送信失敗してもユーザー体験は継続
+        console.warn('Webhook送信エラー:', e);
+      }
+    }
+
+    // 予約ボタンのURLを設定
+    document.getElementById('booking-link').href = ELME_CONFIG.bookingUrl;
 
     // Build summary
     const summaryBox = document.getElementById('summary-box');
