@@ -650,6 +650,105 @@ body {
   </div>
 </section>
 
+<!-- ===== FLOW ===== -->
+<style>
+.flow { padding: 90px 0; background: var(--bg); }
+.flow-steps {
+  display: flex; flex-direction: column;
+  max-width: 680px; margin: 48px auto 0;
+}
+.flow-step {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 0 0 36px; position: relative;
+}
+.flow-step:not(:last-child)::after {
+  content: ''; position: absolute;
+  left: 24px; top: 52px; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--orange), rgba(255,92,53,.2));
+}
+.step-num {
+  width: 50px; height: 50px; border-radius: 50%;
+  background: var(--navy); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 900; flex-shrink: 0;
+  position: relative; z-index: 2;
+  box-shadow: 0 4px 16px rgba(30,45,94,.28);
+  transition: background .2s;
+}
+.flow-step:hover .step-num { background: var(--orange); }
+.step-body { padding-top: 8px; }
+.step-label { font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: .1em; margin-bottom: 5px; }
+.step-title { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 7px; }
+.step-desc  { font-size: 13.5px; color: var(--text-mid); line-height: 1.8; }
+</style>
+
+<section class="flow" id="flow">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-tag">FLOW</div>
+      <h2 class="section-title center">ご利用の<span class="accent">流れ</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-lead center" style="margin-top:14px;">最初の一歩は、3分のアンケートだけ</p>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step fade-up">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-label">STEP 01</div>
+          <div class="step-title">無料アンケート・相談申込み</div>
+          <p class="step-desc">まずは3分でできるアンケートにご回答ください。現在の状況や希望をお伺いし、最適なサポートをご提案します。</p>
+        </div>
+      </div>
+      <div class="flow-step fade-up">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-label">STEP 02</div>
+          <div class="step-title">ヒアリング・状況の整理</div>
+          <p class="step-desc">専任担当者が丁寧にヒアリング。仕事・住まい・生活インフラなど、今必要な支援を一緒に整理します。</p>
+        </div>
+      </div>
+      <div class="flow-step fade-up">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-label">STEP 03</div>
+          <div class="step-title">求人・物件のご提案</div>
+          <p class="step-desc">ヒアリング内容をもとに、あなたに合った求人・物件を厳選してご提案。納得するまで何度でも相談できます。</p>
+        </div>
+      </div>
+      <div class="flow-step fade-up">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-label">STEP 04</div>
+          <div class="step-title">就職・入居の手続き</div>
+          <p class="step-desc">面接調整・書類手続き・入居手続きまで、担当者がすべてサポート。手間なくスムーズに進められます。</p>
+        </div>
+      </div>
+      <div class="flow-step fade-up">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-label">STEP 05</div>
+          <div class="step-title">新生活のセットアップ</div>
+          <p class="step-desc">電気・ガス・Wi-Fiなどのライフライン手配、必要に応じて保険提案まで。引っ越し後の生活環境を整えます。</p>
+        </div>
+      </div>
+      <div class="flow-step fade-up">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <div class="step-label">STEP 06</div>
+          <div class="step-title">定着・アフターフォロー</div>
+          <p class="step-desc">就職・入居後も定着まで継続的にフォロー。新生活での不安や悩みも引き続き相談できます。</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="line-survey.html" class="btn-primary" style="font-size:16px;padding:18px 40px;">
+        📋 まずはアンケートに答える（無料・3分）
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ★ 以降のセクションをここに追加していく ★ -->
 
 </body>
