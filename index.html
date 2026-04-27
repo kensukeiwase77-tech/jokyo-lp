@@ -806,6 +806,156 @@ body {
   </div>
 </section>
 
+<!-- ===== VALUES ===== -->
+<style>
+.values {
+  padding: 90px 0;
+  background: linear-gradient(135deg, var(--navy-dark) 0%, #0C1427 100%);
+  position: relative; overflow: hidden;
+}
+.values::before {
+  content: '7'; position: absolute; right: -30px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 380px; font-weight: 900; line-height: 1;
+  color: rgba(255,255,255,.03); pointer-events: none;
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 14px; margin-top: 44px;
+}
+.value-card {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius); padding: 22px 20px; transition: all .25s;
+}
+.value-card:hover { background: rgba(255,92,53,.12); border-color: rgba(255,92,53,.3); transform: translateX(5px); }
+.value-num {
+  width: 42px; height: 42px; background: var(--orange); color: white;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 900; flex-shrink: 0;
+}
+.value-title { font-size: 16px; font-weight: 700; color: white; margin-bottom: 6px; }
+.value-desc  { font-size: 12.5px; color: rgba(255,255,255,.6); line-height: 1.75; }
+</style>
+
+<section class="values" id="values">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-tag light">7 VALUES</div>
+      <h2 class="section-title center white"><span class="accent">7</span>つのVALUE</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead center white" style="margin-top:14px;">７PRIDEが大切にしている7つの価値観</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card fade-up">
+        <div class="value-num">1</div>
+        <div>
+          <div class="value-title">圧倒的行動</div>
+          <p class="value-desc">考えるだけで終わらず、まず動く。お客様の人生も、会社の成長も、行動量で変える。</p>
+        </div>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-num">2</div>
+        <div>
+          <div class="value-title">結果への執着</div>
+          <p class="value-desc">優しさだけではなく、成果にこだわる。就職・入居・生活安定まで、結果を出し続ける。</p>
+        </div>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-num">3</div>
+        <div>
+          <div class="value-title">誠実さ</div>
+          <p class="value-desc">お客様にも、仲間にも、取引先にも誠実であること。長く信頼される会社になるための土台。</p>
+        </div>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-num">4</div>
+        <div>
+          <div class="value-title">感謝</div>
+          <p class="value-desc">人も仕事も一人では成り立たない。感謝を口だけでなく、行動で示す。</p>
+        </div>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-num">5</div>
+        <div>
+          <div class="value-title">スピード重視</div>
+          <p class="value-desc">人生を変えたい人にとって、遅さは機会損失。相談が来たら早く動き、早く提案し、早く解決する。</p>
+        </div>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-num">6</div>
+        <div>
+          <div class="value-title">責任ある実行</div>
+          <p class="value-desc">言ったことをやる。途中で投げず、最後までやり切る。</p>
+        </div>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-num">7</div>
+        <div>
+          <div class="value-title">価値提供思考</div>
+          <p class="value-desc">売ることが目的ではなく、相手に本当に意味のある価値を出す。結果として利益がついてくる。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHILOSOPHY ===== -->
+<style>
+.philosophy { padding: 90px 0; background: var(--bg); }
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; margin-top: 48px;
+}
+.philosophy-card {
+  background: white; border-radius: var(--radius);
+  padding: 36px 28px; text-align: center;
+  box-shadow: var(--shadow); position: relative; overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
+}
+.philosophy-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.philosophy-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 4px; background: linear-gradient(90deg, var(--navy), var(--orange));
+}
+.philosophy-icon  { font-size: 42px; display: block; margin-bottom: 16px; }
+.philosophy-label { font-size: 11px; font-weight: 700; letter-spacing: .15em; color: var(--orange); margin-bottom: 14px; }
+.philosophy-text  { font-size: clamp(16px, 2.5vw, 19px); font-weight: 900; color: var(--navy); line-height: 1.5; margin-bottom: 14px; }
+.philosophy-desc  { font-size: 12.5px; color: var(--text-mid); line-height: 1.85; }
+</style>
+
+<section class="philosophy" id="philosophy">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-tag">PHILOSOPHY</div>
+      <h2 class="section-title center">企業<span class="accent">理念</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="philosophy-grid">
+      <div class="philosophy-card fade-up">
+        <span class="philosophy-icon">💎</span>
+        <div class="philosophy-label">経営理念</div>
+        <div class="philosophy-text">人の可能性を信じ、<br>誇りある人生を創る</div>
+        <p class="philosophy-desc">単に売上を作る会社ではなく、人が人生を立て直すきっかけを作る会社。７PRIDEが見ているのは、今その人が困っている状況だけではありません。その人がこれからどう生きたいか、どんな人生を築きたいかです。</p>
+      </div>
+      <div class="philosophy-card fade-up">
+        <span class="philosophy-icon">🎯</span>
+        <div class="philosophy-label">ミッション</div>
+        <div class="philosophy-text">挑戦できる環境を<br>社会に創り続ける</div>
+        <p class="philosophy-desc">世の中には、「能力がない」のではなく、挑戦できる環境がない人が多くいます。住む場所・お金・情報・応援してくれる人。７PRIDEは挑戦の土台そのものを提供する会社です。</p>
+      </div>
+      <div class="philosophy-card fade-up">
+        <span class="philosophy-icon">🌟</span>
+        <div class="philosophy-label">ビジョン</div>
+        <div class="philosophy-text">日本一、人生を変える<br>機会を提供する会社になる</div>
+        <p class="philosophy-desc">就職・転職・上京・引っ越し・新生活。これらは全部、人の人生が大きく動くタイミングです。７PRIDEは、そのタイミングに最も深く関わる会社を目指します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ★ 以降のセクションをここに追加していく ★ -->
 
 </body>
