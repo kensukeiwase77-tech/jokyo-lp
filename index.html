@@ -467,6 +467,128 @@ body {
   <path fill="#F8F8FC" d="M0,0L80,10C160,20,320,40,480,46C640,52,800,42,960,32C1120,22,1280,16,1360,14L1440,12L1440,50L0,50Z"/>
 </svg>
 
+<!-- ===== SERVICES ===== -->
+<style>
+.services { padding: 90px 0; background: var(--bg); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px; margin-top: 48px;
+}
+.service-card {
+  background: white; border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; transition: all .3s;
+}
+.service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.service-card-head {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 28px 24px 22px; position: relative; overflow: hidden;
+}
+.service-card-head::after {
+  content: attr(data-num);
+  position: absolute; top: 8px; right: 14px;
+  font-size: 56px; font-weight: 900;
+  color: rgba(255,255,255,.08); line-height: 1;
+}
+.service-icon  { font-size: 38px; display: block; margin-bottom: 12px; }
+.service-title { font-size: 17px; font-weight: 700; color: white; margin-bottom: 5px; }
+.service-en    { font-size: 11px; color: rgba(255,255,255,.55); letter-spacing: .08em; }
+.service-body  { padding: 20px 24px 26px; flex: 1; }
+.service-desc  { font-size: 13px; color: var(--text-mid); line-height: 1.8; margin-bottom: 16px; }
+.service-list  { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.service-list li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text); font-weight: 500;
+}
+.service-list li::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--orange); flex-shrink: 0;
+}
+</style>
+
+<section class="services" id="services">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-tag">SERVICE</div>
+      <h2 class="section-title center"><span class="accent">4</span>つの事業</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead center" style="margin-top:14px;">一人の人生に必要な支援を、順番に、まとめて提供します</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card fade-up">
+        <div class="service-card-head" data-num="01">
+          <span class="service-icon">💼</span>
+          <div class="service-title">人材紹介・就職支援</div>
+          <div class="service-en">Job Support</div>
+        </div>
+        <div class="service-body">
+          <p class="service-desc">「どんな仕事が自分に合うか」からサポート。キャリアヒアリングをもとに求人紹介・面接対策・内定まで一気通貫で伴走します。</p>
+          <ul class="service-list">
+            <li>キャリアヒアリング・求人紹介</li>
+            <li>書類添削・面接対策</li>
+            <li>面接調整・入社フォロー</li>
+            <li>定着サポート</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-card-head" data-num="02">
+          <span class="service-icon">🏠</span>
+          <div class="service-title">賃貸仲介・住まい支援</div>
+          <div class="service-en">Housing Support</div>
+        </div>
+        <div class="service-body">
+          <p class="service-desc">仕事が決まったら、次は住まい。内定先へのアクセスや家賃相場を踏まえ、上京者に最適な物件をご提案します。</p>
+          <ul class="service-list">
+            <li>物件探し・内見サポート</li>
+            <li>提携不動産会社への送客</li>
+            <li>初期費用のご相談</li>
+            <li>入居手続きサポート</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-card-head" data-num="03">
+          <span class="service-icon">⚡</span>
+          <div class="service-title">ライフライン・新生活支援</div>
+          <div class="service-en">Lifestyle Support</div>
+        </div>
+        <div class="service-body">
+          <p class="service-desc">引っ越し後の面倒な手続きも７PRIDEにお任せ。電気・ガス・Wi-Fiなど新生活に必要なものをまとめてセットアップします。</p>
+          <ul class="service-list">
+            <li>電気・ガス手続き</li>
+            <li>Wi-Fi・光回線の手配</li>
+            <li>ウォーターサーバー提案</li>
+            <li>家具家電のご案内</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-card-head" data-num="04">
+          <span class="service-icon">🛡️</span>
+          <div class="service-title">保険・将来設計支援</div>
+          <div class="service-en">Future Support</div>
+        </div>
+        <div class="service-body">
+          <p class="service-desc">今だけでなく、これからの人生も整える支援。生命保険・医療保険・ライフプランまで、将来を見据えた提案を行います。</p>
+          <ul class="service-list">
+            <li>生命保険・医療保険提案</li>
+            <li>家計見直し相談</li>
+            <li>ライフプラン設計</li>
+            <li>将来設計のご相談</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ★ 以降のセクションをここに追加していく ★ -->
 
 </body>
