@@ -167,9 +167,9 @@
 
 ## 6. 残タスク
 
-- [ ] `index.html` 新規作成（メインホームページ）
-- [ ] ブランチ `claude/create-7pride-homepage-NB24f` にコミット
-- [ ] `git push -u origin claude/create-7pride-homepage-NB24f`
+- [x] `index.html` 新規作成（メインホームページ）← 完了
+- [x] ブランチ `claude/create-7pride-homepage-NB24f` にコミット（9コミット）← 完了
+- [ ] `git push -u origin claude/create-7pride-homepage-NB24f` ← **セッション再起動後に実行**
 
 ---
 
