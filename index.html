@@ -749,6 +749,63 @@ body {
   </div>
 </section>
 
+<!-- ===== TARGET ===== -->
+<style>
+.target { padding: 90px 0; }
+.target-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px; margin-top: 40px;
+}
+.target-card {
+  background: var(--bg); border-radius: var(--radius);
+  padding: 28px 22px; border-left: 4px solid var(--orange);
+  transition: all .2s;
+}
+.target-card:hover { transform: translateX(5px); box-shadow: var(--shadow); background: white; }
+.target-icon { font-size: 38px; display: block; margin-bottom: 12px; }
+.target-type { font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: .1em; margin-bottom: 6px; }
+.target-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.5; }
+.target-desc { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+</style>
+
+<section class="target" id="target">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-tag">TARGET</div>
+      <h2 class="section-title center">こんな方に<span class="accent">強い</span>です</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead center" style="margin-top:14px;">人生を前に進めたいと思っている、すべての方へ</p>
+    </div>
+    <div class="target-grid">
+      <div class="target-card fade-up">
+        <span class="target-icon">🚀</span>
+        <div class="target-type">PERSONA 01</div>
+        <div class="target-name">地方から東京に<br>出て働きたい方</div>
+        <p class="target-desc">仕事も家も決まっていない状態から、東京での新生活を丸ごとサポートします。一人で不安な方こそ、７PRIDEにお任せください。</p>
+      </div>
+      <div class="target-card fade-up">
+        <span class="target-icon">🔄</span>
+        <div class="target-type">PERSONA 02</div>
+        <div class="target-name">転職・再スタートを<br>目指している方</div>
+        <p class="target-desc">今の職場や生活に限界を感じている方へ。収入アップ・環境改善・正社員就職など、あなたの「変わりたい」を全力でサポートします。</p>
+      </div>
+      <div class="target-card fade-up">
+        <span class="target-icon">📦</span>
+        <div class="target-type">PERSONA 03</div>
+        <div class="target-name">引っ越し・新生活の<br>手続きをまとめたい方</div>
+        <p class="target-desc">電気・ガス・Wi-Fi・保険など、引っ越し後の手続きが面倒な方へ。７PRIDEが一括でまとめてお手伝いします。</p>
+      </div>
+      <div class="target-card fade-up">
+        <span class="target-icon">💪</span>
+        <div class="target-type">PERSONA 04</div>
+        <div class="target-name">人生をやり直したい・<br>環境を変えたい方</div>
+        <p class="target-desc">つまずいても、再スタートの機会は必ずあります。７PRIDEは「人の可能性を信じる」会社です。一緒に前に進みましょう。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ★ 以降のセクションをここに追加していく ★ -->
 
 </body>
