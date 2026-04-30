@@ -205,6 +205,162 @@ body {
   </div>
 </div>
 
+<!-- ===== HERO ===== -->
+<style>
+.hero {
+  min-height: 100svh;
+  background: linear-gradient(150deg, #0A2E1A 0%, #0D4A28 45%, #1A6B3A 100%);
+  display: flex; align-items: center; position: relative;
+  overflow: hidden; padding: 100px 20px 70px;
+}
+.hero::before {
+  content: ''; position: absolute; top: -80px; right: -80px;
+  width: 480px; height: 480px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(6,199,85,.22) 0%, transparent 70%);
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -60px; left: 40%;
+  width: 360px; height: 360px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,184,0,.10) 0%, transparent 70%);
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr;
+  gap: 40px; align-items: center;
+  max-width: 1060px; margin: 0 auto; width: 100%;
+}
+@media (min-width: 860px) {
+  .hero-inner { grid-template-columns: 1fr 1fr; }
+}
+
+/* Left */
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(6,199,85,.2); border: 1.5px solid rgba(6,199,85,.5);
+  color: #6EE89A; font-size: 12px; font-weight: 700;
+  padding: 7px 16px; border-radius: 30px; margin-bottom: 24px; letter-spacing: .04em;
+}
+.hero-headline {
+  font-size: clamp(36px, 7vw, 64px); font-weight: 900;
+  color: white; line-height: 1.2; margin-bottom: 12px;
+  letter-spacing: -.02em;
+}
+.hero-headline em { color: var(--green); font-style: normal; }
+.hero-sub {
+  font-size: clamp(14px, 2.5vw, 18px); color: rgba(255,255,255,.82);
+  font-weight: 500; line-height: 1.7; margin-bottom: 10px;
+}
+.hero-desc {
+  font-size: 13px; color: rgba(255,255,255,.55);
+  line-height: 1.9; margin-bottom: 32px;
+}
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
+
+.hero-points {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.hero-point {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.8); font-size: 12px; font-weight: 700;
+  padding: 7px 14px; border-radius: 20px;
+}
+
+/* Right card */
+.hero-card {
+  background: white; border-radius: 24px;
+  padding: 28px 24px;
+  box-shadow: 0 16px 48px rgba(0,0,0,.25);
+}
+.hero-card-title {
+  font-size: 15px; font-weight: 700; color: var(--text);
+  margin-bottom: 18px; text-align: center;
+  padding-bottom: 14px; border-bottom: 2px solid var(--green-light);
+}
+.hero-check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.hero-check-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.5;
+}
+.hero-check-list li::before {
+  content: '✓'; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--green); color: white; font-size: 13px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  margin-top: 1px;
+}
+.hero-card-cta { display: flex; flex-direction: column; gap: 10px; }
+.hero-card-cta a { text-align: center; justify-content: center; border-radius: 14px; }
+.hero-card-note {
+  text-align: center; font-size: 11px; color: var(--text-light); margin-top: 8px;
+}
+
+.scroll-hint {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: rgba(255,255,255,.35); font-size: 10px; letter-spacing: .12em;
+  animation: bounce 2s ease-in-out infinite;
+}
+.scroll-hint::after {
+  content: ''; width: 1px; height: 32px;
+  background: linear-gradient(180deg, rgba(255,255,255,.35), transparent);
+}
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(6px); }
+}
+</style>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <!-- Left -->
+    <div>
+      <div class="hero-badge">🏙️ 株式会社７PRIDE 運営サービス</div>
+      <h1 class="hero-headline">
+        仕事も家も、<br><em>まとめて</em>サポート。
+      </h1>
+      <p class="hero-sub">上京したい気持ちはあるけど、<br>何から始めればいいか分からない方へ</p>
+      <p class="hero-desc">
+        就職・住まい探し・生活インフラの手続きまで、<br>
+        上京支援センターが全部まとめて無料でサポートします。
+      </p>
+      <div class="hero-cta">
+        <a href="line-survey.html" class="btn-green" style="font-size:16px;padding:17px 34px;">📋 無料相談をはじめる</a>
+        <a href="#services" class="btn-outline" style="color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.4);">サポート内容を見る →</a>
+      </div>
+      <div class="hero-points">
+        <div class="hero-point">🆓 完全無料</div>
+        <div class="hero-point">⚡ 即日対応</div>
+        <div class="hero-point">🌐 全国オンライン</div>
+        <div class="hero-point">🤝 専任担当制</div>
+      </div>
+    </div>
+    <!-- Right -->
+    <div class="hero-card fade-up">
+      <div class="hero-card-title">📋 こんな方を全力サポートします</div>
+      <ul class="hero-check-list">
+        <li>地方から東京に出て働きたい</li>
+        <li>仕事も家も一緒に決めたい</li>
+        <li>転職・正社員就職を目指している</li>
+        <li>引っ越しの手続きが面倒・不安</li>
+        <li>誰かに相談しながら上京を進めたい</li>
+      </ul>
+      <div class="hero-card-cta">
+        <a href="line-survey.html" class="btn-green">📋 まずはアンケートに答える（3分）</a>
+        <a href="reservation.html" class="btn-outline">📅 無料面談を予約する</a>
+      </div>
+      <p class="hero-card-note">🔒 費用は一切かかりません</p>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- wave -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 50" preserveAspectRatio="none"
+  style="display:block;height:40px;background:#1A6B3A;margin-top:-1px;">
+  <path fill="#F7F9F7" d="M0,50L80,40C160,30,320,12,480,8C640,4,800,14,960,22C1120,30,1280,38,1360,42L1440,46L1440,50L0,50Z"/>
+</svg>
+
 <!-- ★ 以降のセクションをここに追加していく ★ -->
 
 </body>
