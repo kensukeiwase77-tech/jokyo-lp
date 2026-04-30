@@ -517,6 +517,189 @@ body {
   <path fill="#FFFFFF" d="M0,50L80,40C160,30,320,12,480,8C640,4,800,14,960,22C1120,30,1280,38,1360,42L1440,46L1440,50L0,50Z"/>
 </svg>
 
+<!-- ===== SERVICES ===== -->
+<style>
+.services { padding: 90px 0; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px; margin-top: 48px;
+}
+.svc-card {
+  background: white; border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow); transition: all .3s;
+  display: flex; flex-direction: column;
+}
+.svc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.svc-head {
+  background: linear-gradient(135deg, #0D4A28 0%, #1A6B3A 100%);
+  padding: 26px 22px 20px; position: relative; overflow: hidden;
+}
+.svc-head::after {
+  content: attr(data-num); position: absolute; top: 6px; right: 12px;
+  font-size: 52px; font-weight: 900; color: rgba(255,255,255,.08); line-height: 1;
+}
+.svc-icon  { font-size: 36px; display: block; margin-bottom: 10px; }
+.svc-title { font-size: 16px; font-weight: 700; color: white; margin-bottom: 4px; }
+.svc-en    { font-size: 11px; color: rgba(255,255,255,.5); letter-spacing: .08em; }
+.svc-body  { padding: 20px 22px 24px; flex: 1; }
+.svc-desc  { font-size: 13px; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
+.svc-list  { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.svc-list li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text); font-weight: 500;
+}
+.svc-list li::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green); flex-shrink: 0;
+}
+
+/* ===== FLOW ===== */
+.flow { padding: 90px 0; background: var(--bg); }
+.flow-steps {
+  display: flex; flex-direction: column;
+  max-width: 660px; margin: 48px auto 0;
+}
+.flow-step {
+  display: flex; align-items: flex-start; gap: 18px;
+  padding: 0 0 34px; position: relative;
+}
+.flow-step:not(:last-child)::after {
+  content: ''; position: absolute; left: 23px; top: 48px; bottom: 0;
+  width: 2px; background: linear-gradient(180deg, var(--green), rgba(6,199,85,.2));
+}
+.step-num {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--green); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 900; flex-shrink: 0;
+  position: relative; z-index: 2;
+  box-shadow: 0 4px 14px rgba(6,199,85,.35);
+}
+.step-body  { padding-top: 7px; }
+.step-label { font-size: 11px; font-weight: 700; color: var(--green-dark); letter-spacing: .1em; margin-bottom: 4px; }
+.step-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.step-desc  { font-size: 13px; color: var(--text-mid); line-height: 1.8; }
+</style>
+
+<section class="services" id="services">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-tag">SUPPORT</div>
+      <h2 class="section-title center">サポート<span class="accent">内容</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-lead center" style="margin-top:14px;">就職から新生活まで、必要なことをすべてお手伝いします</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card fade-up">
+        <div class="svc-head" data-num="01">
+          <span class="svc-icon">💼</span>
+          <div class="svc-title">就職・転職サポート</div>
+          <div class="svc-en">Job Support</div>
+        </div>
+        <div class="svc-body">
+          <p class="svc-desc">「どんな仕事が合うか」から一緒に考えます。未経験・学歴不問の求人も豊富にご紹介。内定まで伴走します。</p>
+          <ul class="svc-list">
+            <li>キャリア相談・求人紹介</li>
+            <li>履歴書・職務経歴書の添削</li>
+            <li>面接対策・日程調整</li>
+            <li>入社・定着フォロー</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-head" data-num="02">
+          <span class="svc-icon">🏠</span>
+          <div class="svc-title">住まい探しサポート</div>
+          <div class="svc-en">Housing Support</div>
+        </div>
+        <div class="svc-body">
+          <p class="svc-desc">仕事が決まったら次は家。内定先の近くで家賃相場に合った物件を、提携不動産会社と連携してご提案します。</p>
+          <ul class="svc-list">
+            <li>物件探し・条件整理</li>
+            <li>初期費用の相談・抑え方</li>
+            <li>提携不動産への橋渡し</li>
+            <li>入居手続きのサポート</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-head" data-num="03">
+          <span class="svc-icon">⚡</span>
+          <div class="svc-title">新生活セットアップ</div>
+          <div class="svc-en">Life Support</div>
+        </div>
+        <div class="svc-body">
+          <p class="svc-desc">引っ越し後の面倒な手続きもお任せ。電気・ガス・Wi-Fiなど新生活に必要なものをまとめて手配します。</p>
+          <ul class="svc-list">
+            <li>電気・ガスの手続き</li>
+            <li>Wi-Fi・光回線の手配</li>
+            <li>ウォーターサーバー提案</li>
+            <li>家具家電のご案内</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow" id="flow">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-tag">FLOW</div>
+      <h2 class="section-title center">ご利用の<span class="accent">流れ</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-lead center" style="margin-top:14px;">最初の一歩は、たった3分のアンケートだけ</p>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step fade-up">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-label">STEP 01</div>
+          <div class="step-title">アンケートに答える（約3分）</div>
+          <p class="step-desc">現在の状況・希望をかんたんなアンケートでお伺いします。スマホで3分で完了します。</p>
+        </div>
+      </div>
+      <div class="flow-step fade-up">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-label">STEP 02</div>
+          <div class="step-title">無料面談（オンライン・約30分）</div>
+          <p class="step-desc">専任スタッフが丁寧にヒアリング。仕事・住まい・生活面の悩みを整理し、最適なサポートをご提案します。</p>
+        </div>
+      </div>
+      <div class="flow-step fade-up">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-label">STEP 03</div>
+          <div class="step-title">求人・物件のご提案</div>
+          <p class="step-desc">ヒアリングをもとに、あなたに合う求人・物件を厳選してご提案。納得するまで何度でも相談できます。</p>
+        </div>
+      </div>
+      <div class="flow-step fade-up">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-label">STEP 04</div>
+          <div class="step-title">就職・入居の手続き</div>
+          <p class="step-desc">面接対策・書類手続き・入居手続きまでスタッフが全面サポート。はじめての方でも安心です。</p>
+        </div>
+      </div>
+      <div class="flow-step fade-up">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-label">STEP 05</div>
+          <div class="step-title">新生活スタート＆アフターフォロー</div>
+          <p class="step-desc">電気・ガス・Wi-Fiの手配も完了したら上京完了！就職後も定着まで継続してフォローします。</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="line-survey.html" class="btn-green" style="font-size:16px;padding:18px 40px;">
+        📋 まずはアンケートに答える（無料・3分）
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ★ 以降のセクションをここに追加していく ★ -->
 
 </body>
