@@ -361,6 +361,162 @@ body {
   <path fill="#F7F9F7" d="M0,50L80,40C160,30,320,12,480,8C640,4,800,14,960,22C1120,30,1280,38,1360,42L1440,46L1440,50L0,50Z"/>
 </svg>
 
+<!-- ===== TROUBLES ===== -->
+<style>
+.troubles { padding: 80px 0; background: var(--bg); }
+.troubles-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px; margin-top: 40px;
+}
+.trouble-card {
+  background: white; border-radius: var(--radius);
+  padding: 22px 18px; border: 2px solid var(--border);
+  display: flex; align-items: flex-start; gap: 14px;
+  box-shadow: var(--shadow); transition: all .2s;
+}
+.trouble-card:hover { border-color: var(--green); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.trouble-icon { font-size: 28px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+.trouble-text strong { display: block; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.trouble-text span   { font-size: 12.5px; color: var(--text-mid); line-height: 1.65; }
+
+/* ===== SOLUTION ===== */
+.solution {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0D4A28 0%, #0A2E1A 100%);
+  position: relative; overflow: hidden;
+}
+.solution::before {
+  content: ''; position: absolute; top: 50%; right: -120px;
+  transform: translateY(-50%); width: 480px; height: 480px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(6,199,85,.15) 0%, transparent 70%);
+}
+.solution-inner {
+  display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;
+}
+@media (min-width: 860px) { .solution-inner { grid-template-columns: 1fr 1fr; } }
+
+.solution-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pillar-card {
+  background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.12);
+  border-radius: var(--radius); padding: 20px 16px; text-align: center; transition: all .2s;
+}
+.pillar-card:hover { background: rgba(6,199,85,.18); border-color: rgba(6,199,85,.4); }
+.pillar-icon { font-size: 30px; display: block; margin-bottom: 8px; }
+.pillar-name { font-size: 13px; font-weight: 700; color: white; margin-bottom: 3px; }
+.pillar-sub  { font-size: 11px; color: rgba(255,255,255,.5); line-height: 1.5; }
+
+.badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(6,199,85,.18); border: 1px solid rgba(6,199,85,.35);
+  color: #6EE89A; font-size: 12px; font-weight: 700;
+  padding: 6px 12px; border-radius: 20px;
+}
+</style>
+
+<section class="troubles" id="troubles">
+  <div class="container">
+    <div class="section-tag">TROUBLE</div>
+    <h2 class="section-title">こんな<span class="accent">悩み</span>、ありませんか？</h2>
+    <div class="section-divider left"></div>
+    <div class="troubles-grid">
+      <div class="trouble-card fade-up">
+        <div class="trouble-icon">💼</div>
+        <div class="trouble-text">
+          <strong>仕事が決まらない</strong>
+          <span>どんな求人を選べばいいか、面接対策もわからない</span>
+        </div>
+      </div>
+      <div class="trouble-card fade-up">
+        <div class="trouble-icon">🏠</div>
+        <div class="trouble-text">
+          <strong>家の探し方がわからない</strong>
+          <span>上京時の物件探し・初期費用・手続きが不安</span>
+        </div>
+      </div>
+      <div class="trouble-card fade-up">
+        <div class="trouble-icon">💰</div>
+        <div class="trouble-text">
+          <strong>お金・初期費用が心配</strong>
+          <span>貯金が少なく、上京にかかる費用が重い</span>
+        </div>
+      </div>
+      <div class="trouble-card fade-up">
+        <div class="trouble-icon">📋</div>
+        <div class="trouble-text">
+          <strong>手続きが多くて面倒</strong>
+          <span>電気・ガス・Wi-Fi…何から始めればいいかわからない</span>
+        </div>
+      </div>
+      <div class="trouble-card fade-up">
+        <div class="trouble-icon">🙋</div>
+        <div class="trouble-text">
+          <strong>誰に相談すればいいかわからない</strong>
+          <span>一人で抱え込んでいて、なかなか動けない</span>
+        </div>
+      </div>
+      <div class="trouble-card fade-up">
+        <div class="trouble-icon">😟</div>
+        <div class="trouble-text">
+          <strong>知り合いがいない・孤独が怖い</strong>
+          <span>東京の生活に慣れるか、友人もいなくて不安</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solution">
+  <div class="container">
+    <div class="solution-inner">
+      <div class="fade-up">
+        <div class="section-tag" style="background:rgba(6,199,85,.2);color:#6EE89A;">SOLUTION</div>
+        <h2 class="section-title white">
+          上京支援センターが<br><span style="color:var(--green);">丸ごと</span>解決します
+        </h2>
+        <div class="section-divider left" style="background:var(--green);"></div>
+        <p class="section-lead white" style="margin-top:18px;">
+          仕事・家・生活インフラまで、上京に必要なすべてをワンストップでサポート。バラバラの窓口に相談する手間も不安もありません。
+        </p>
+        <div class="badge-row">
+          <div class="badge">✅ 完全無料</div>
+          <div class="badge">⚡ 即日対応</div>
+          <div class="badge">🤝 専任担当制</div>
+          <div class="badge">🌐 全国オンライン</div>
+        </div>
+      </div>
+      <div class="solution-pillars fade-up">
+        <div class="pillar-card">
+          <span class="pillar-icon">💼</span>
+          <div class="pillar-name">就職・転職支援</div>
+          <div class="pillar-sub">求人紹介から内定まで</div>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-icon">🏠</span>
+          <div class="pillar-name">住まい支援</div>
+          <div class="pillar-sub">物件探し・入居サポート</div>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-icon">⚡</span>
+          <div class="pillar-name">ライフライン手配</div>
+          <div class="pillar-sub">電気・ガス・Wi-Fi</div>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-icon">🛡️</span>
+          <div class="pillar-name">保険・将来設計</div>
+          <div class="pillar-sub">ライフプラン提案</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 50" preserveAspectRatio="none"
+  style="display:block;height:40px;background:#0A2E1A;margin-top:-1px;">
+  <path fill="#FFFFFF" d="M0,50L80,40C160,30,320,12,480,8C640,4,800,14,960,22C1120,30,1280,38,1360,42L1440,46L1440,50L0,50Z"/>
+</svg>
+
 <!-- ★ 以降のセクションをここに追加していく ★ -->
 
 </body>
