@@ -3,564 +3,369 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>上京支援センター｜人生を変える、すべてのきっかけを。</title>
-<meta name="description" content="上京支援センターは、仕事探しから住まい、新生活まであなたの挑戦をワンストップで支援します。未経験OK・寮付き案件あり・LINEで無料相談可能。">
+<title>上京支援センター｜仕事も家も、まとめてサポート。</title>
+<meta name="description" content="上京支援センターは、就職・住まい・新生活をワンストップで支援するサービスです。サポートは実質無料。地方から東京への上京を全力でサポートします。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* ===== RESET & VARIABLES ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:        #1E2D5E;
-  --navy-dark:   #0D1B3E;
-  --navy-mid:    #2B4080;
-  --gold:        #FFB800;
-  --gold-light:  #FFF8E1;
-  --gold-mid:    #FFE57A;
-  --orange:      #FF6B35;
-  --orange-light:#FFF0EB;
-  --green:       #06C755;
-  --green-dark:  #049a41;
-  --bg:          #F5F7FA;
+  --purple:      #6B47DC;
+  --purple-dark: #4A2FA0;
+  --purple-mid:  #8B67EC;
+  --purple-light:#EEE8FB;
+  --blue:        #4169E1;
+  --grad:        linear-gradient(135deg, #6B47DC 0%, #4169E1 100%);
+  --grad-soft:   linear-gradient(135deg, #8B67EC 0%, #6090F0 100%);
+  --orange:      #FF6535;
+  --orange-grad: linear-gradient(135deg, #FF6535 0%, #FF9240 100%);
+  --bg:          #F2F4FB;
   --white:       #FFFFFF;
-  --text:        #1A1A2E;
-  --text-mid:    #555577;
-  --text-light:  #9090AA;
-  --border:      #E0E4F0;
-  --shadow:      0 4px 24px rgba(30,45,94,.10);
-  --shadow-lg:   0 10px 48px rgba(30,45,94,.18);
-  --radius:      18px;
+  --text:        #1C1C2E;
+  --text-mid:    #55557A;
+  --text-light:  #9090B0;
+  --border:      #E2E4F0;
+  --shadow:      0 4px 20px rgba(107,71,220,.12);
+  --shadow-lg:   0 8px 40px rgba(107,71,220,.20);
+  --radius:      16px;
+  --radius-lg:   24px;
 }
 
 html { scroll-behavior: smooth; }
-body {
-  font-family: 'Noto Sans JP', sans-serif;
-  color: var(--text); background: var(--white);
-  line-height: 1.7; overflow-x: hidden;
-}
+body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); line-height: 1.7; overflow-x: hidden; }
 
-/* ===== UTILITIES ===== */
-.container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.container { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
 
-.section-tag {
-  display: inline-block;
-  font-size: 11px; font-weight: 700; letter-spacing: .18em;
-  background: var(--gold-light); color: var(--navy);
-  padding: 5px 16px; border-radius: 30px; margin-bottom: 14px;
-  border: 1px solid var(--gold-mid);
-}
-.section-tag.white { background: rgba(255,255,255,.15); color: rgba(255,255,255,.9); border-color: rgba(255,255,255,.25); }
-.section-tag.green { background: rgba(6,199,85,.15); color: #049a41; border-color: rgba(6,199,85,.3); }
-
-.section-title {
-  font-size: clamp(24px, 5vw, 40px); font-weight: 900;
-  line-height: 1.3; margin-bottom: 12px;
-}
-.section-title.center { text-align: center; }
-.section-title.white  { color: var(--white); }
-.accent { color: var(--gold); }
-.orange { color: var(--orange); }
-
-.section-lead { font-size: clamp(13px, 2vw, 15px); color: var(--text-mid); line-height: 1.85; }
-.section-lead.center { text-align: center; }
-
-.section-divider { width: 52px; height: 4px; background: var(--gold); border-radius: 4px; margin: 14px auto 0; }
-.section-divider.left { margin-left: 0; }
-.section-divider.navy { background: var(--navy); }
-
-.fade-up { opacity: 0; transform: translateY(30px); transition: opacity .65s ease, transform .65s ease; }
+/* ===== FADE ===== */
+.fade-up { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
 /* ===== BUTTONS ===== */
-.btn-green {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--green); color: white; font-family: inherit;
-  font-size: 15px; font-weight: 700; padding: 16px 32px;
+.btn-orange {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--orange-grad); color: white; font-family: inherit;
+  font-size: 16px; font-weight: 700; padding: 17px 36px;
   border-radius: 50px; border: none; cursor: pointer; text-decoration: none;
-  transition: all .25s; box-shadow: 0 8px 24px rgba(6,199,85,.38);
+  transition: all .25s; box-shadow: 0 6px 24px rgba(255,101,53,.38);
+  white-space: nowrap;
 }
-.btn-green:hover { background: var(--green-dark); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(6,199,85,.44); }
-
-.btn-gold {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold); color: var(--navy-dark); font-family: inherit;
-  font-size: 15px; font-weight: 700; padding: 16px 32px;
-  border-radius: 50px; border: none; cursor: pointer; text-decoration: none;
-  transition: all .25s; box-shadow: 0 8px 24px rgba(255,184,0,.38);
-}
-.btn-gold:hover { background: #e5a600; transform: translateY(-3px); box-shadow: 0 12px 32px rgba(255,184,0,.44); }
-
-.btn-outline-white {
-  display: inline-flex; align-items: center; gap: 8px;
+.btn-orange:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(255,101,53,.48); }
+.btn-outline {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   background: transparent; color: white; font-family: inherit;
   font-size: 15px; font-weight: 700; padding: 15px 32px;
-  border-radius: 50px; border: 2px solid rgba(255,255,255,.5);
+  border-radius: 50px; border: 2px solid rgba(255,255,255,.55);
   cursor: pointer; text-decoration: none; transition: all .25s;
 }
-.btn-outline-white:hover { background: rgba(255,255,255,.12); border-color: white; }
+.btn-outline:hover { background: rgba(255,255,255,.12); border-color: white; }
 
 /* ===== HEADER ===== */
 .header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 999;
   background: rgba(255,255,255,.97); backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border); transition: all .3s;
-  box-shadow: 0 2px 16px rgba(30,45,94,.08);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(107,71,220,.08);
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
-  height: 64px; padding: 0 20px; max-width: 1120px; margin: 0 auto;
+  height: 62px; padding: 0 24px; max-width: 1120px; margin: 0 auto;
 }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo-icon {
-  width: 38px; height: 38px; background: var(--navy); border-radius: 10px;
-  display: flex; align-items: center; justify-content: center; font-size: 18px;
+  width: 36px; height: 36px; background: var(--grad); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; font-size: 17px;
 }
-.logo-text { font-size: 16px; font-weight: 900; color: var(--navy); line-height: 1.25; }
-.logo-text small { display: block; font-size: 10px; font-weight: 500; color: var(--text-mid); }
+.logo-text { font-size: 15px; font-weight: 900; color: var(--purple-dark); line-height: 1.25; }
+.logo-text small { display: block; font-size: 10px; font-weight: 500; color: var(--text-light); }
 
 .nav-list { display: none; list-style: none; gap: 22px; }
 .nav-list a { color: var(--text-mid); text-decoration: none; font-size: 13px; font-weight: 500; transition: color .2s; }
-.nav-list a:hover { color: var(--navy); }
+.nav-list a:hover { color: var(--purple); }
+@media (min-width: 768px) { .nav-list { display: flex; } }
 
-.btn-header {
-  background: var(--green); color: white; border: none; font-family: inherit;
-  font-size: 13px; font-weight: 700; padding: 10px 20px; border-radius: 30px;
-  cursor: pointer; text-decoration: none; transition: all .2s; white-space: nowrap;
-}
-.btn-header:hover { background: var(--green-dark); }
-
-.hamburger {
-  display: flex; flex-direction: column; gap: 5px;
-  cursor: pointer; padding: 8px; border: none; background: transparent;
-}
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .3s; }
-@media (min-width: 768px) { .nav-list { display: flex; } .hamburger { display: none; } }
+.hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: transparent; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+@media (min-width: 768px) { .hamburger { display: none; } }
 
 .mobile-menu {
-  position: fixed; top: 64px; left: 0; right: 0;
-  background: white; border-bottom: 1px solid var(--border);
-  z-index: 998; padding: 16px;
-  transform: translateY(-8px); opacity: 0; transition: all .3s; pointer-events: none;
+  position: fixed; top: 62px; left: 0; right: 0;
+  background: white; border-bottom: 1px solid var(--border); z-index: 998;
+  padding: 16px; transform: translateY(-8px); opacity: 0;
+  transition: all .3s; pointer-events: none;
 }
 .mobile-menu.open { transform: translateY(0); opacity: 1; pointer-events: all; }
-.mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-.mobile-menu a {
-  display: block; color: var(--text-mid); text-decoration: none;
-  font-size: 15px; font-weight: 500; padding: 11px 14px; border-radius: 10px; transition: all .2s;
-}
-.mobile-menu a:hover { color: var(--navy); background: var(--bg); }
+.mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+.mobile-menu a { display: block; color: var(--text-mid); text-decoration: none; font-size: 15px; font-weight: 500; padding: 11px 14px; border-radius: 10px; transition: all .2s; }
+.mobile-menu a:hover { background: var(--purple-light); color: var(--purple); }
 
 /* ===== HERO ===== */
 .hero {
   min-height: 100svh;
-  background: linear-gradient(140deg, #050E2A 0%, #0D1B3E 40%, #1E2D5E 80%, #2B4080 100%);
-  display: flex; align-items: center; position: relative; overflow: hidden;
+  background: var(--grad);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
   padding: 100px 20px 80px;
 }
 .hero::before {
-  content: ''; position: absolute; top: -100px; right: -100px;
+  content: ''; position: absolute; top: -120px; right: -120px;
   width: 600px; height: 600px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,184,0,.14) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(255,255,255,.12) 0%, transparent 65%);
 }
 .hero::after {
   content: ''; position: absolute; bottom: -80px; left: -60px;
   width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(6,199,85,.10) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(255,146,64,.15) 0%, transparent 65%);
 }
-.hero-inner {
-  position: relative; z-index: 2;
-  max-width: 840px; margin: 0 auto; text-align: center;
-}
+.hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; text-align: center; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,184,0,.15); border: 1.5px solid rgba(255,184,0,.45);
-  color: var(--gold-mid); font-size: 12px; font-weight: 700;
+  background: rgba(255,255,255,.18); border: 1.5px solid rgba(255,255,255,.4);
+  color: white; font-size: 12px; font-weight: 700;
   padding: 7px 18px; border-radius: 30px; margin-bottom: 28px; letter-spacing: .05em;
 }
 .hero-headline {
-  font-size: clamp(40px, 9vw, 76px); font-weight: 900;
-  color: white; line-height: 1.2; margin-bottom: 12px; letter-spacing: -.02em;
+  font-size: clamp(36px, 8vw, 68px); font-weight: 900;
+  color: white; line-height: 1.2; margin-bottom: 10px; letter-spacing: -.02em;
 }
-.hero-headline em { color: var(--gold); font-style: normal; }
+.hero-headline em { color: var(--orange); font-style: normal; }
 .hero-sub {
-  font-size: clamp(15px, 3vw, 22px); color: rgba(255,255,255,.82);
+  font-size: clamp(15px, 2.8vw, 20px); color: rgba(255,255,255,.85);
   font-weight: 500; line-height: 1.7; margin-bottom: 14px;
 }
-.hero-desc {
-  font-size: 13.5px; color: rgba(255,255,255,.55);
-  line-height: 1.9; margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto;
-}
-.hero-desc span { margin-bottom: 36px; display: block; }
-.hero-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-bottom: 48px; }
-
-.hero-points {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
-}
+.hero-desc { font-size: 13.5px; color: rgba(255,255,255,.65); line-height: 1.9; margin-bottom: 36px; }
+.hero-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-bottom: 44px; }
+.hero-points { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .hero-point {
   display: flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
-  color: rgba(255,255,255,.8); font-size: 12px; font-weight: 700;
+  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25);
+  color: white; font-size: 12px; font-weight: 700;
   padding: 7px 16px; border-radius: 20px;
 }
-
 .scroll-hint {
-  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 6px;
-  color: rgba(255,255,255,.35); font-size: 10px; letter-spacing: .12em;
+  color: rgba(255,255,255,.4); font-size: 10px; letter-spacing: .12em;
   animation: bounce 2s ease-in-out infinite;
 }
-.scroll-hint::after { content: ''; width: 1px; height: 36px; background: linear-gradient(180deg, rgba(255,255,255,.35), transparent); }
-@keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(7px); } }
-
-/* ===== WAVE ===== */
-.wave-navy-to-bg {
-  display: block; height: 50px; background: #050E2A; margin-top: -1px;
-}
+.scroll-hint::after { content: ''; width: 1px; height: 34px; background: linear-gradient(rgba(255,255,255,.4), transparent); }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)} }
 
 /* ===== TROUBLES ===== */
 .troubles { padding: 88px 0; background: var(--bg); }
-.troubles-intro { text-align: center; margin-bottom: 48px; }
-.troubles-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 14px; margin-bottom: 48px;
+.section-header { text-align: center; margin-bottom: 48px; }
+.pill {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .15em;
+  padding: 5px 16px; border-radius: 30px; margin-bottom: 14px;
+  background: var(--purple-light); color: var(--purple-dark);
 }
+.pill.white { background: rgba(255,255,255,.2); color: white; }
+.section-title { font-size: clamp(22px, 5vw, 36px); font-weight: 900; line-height: 1.35; }
+.section-title .hl { background: var(--purple); color: white; padding: 2px 10px; border-radius: 6px; }
+.section-title .hl-o { background: var(--orange); color: white; padding: 2px 10px; border-radius: 6px; }
+.section-lead { font-size: 14px; color: var(--text-mid); line-height: 1.85; margin-top: 10px; }
+.troubles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
 .trouble-card {
   background: white; border-radius: var(--radius);
   padding: 20px 18px; border: 2px solid var(--border);
   display: flex; align-items: flex-start; gap: 14px;
   box-shadow: var(--shadow); transition: all .2s;
 }
-.trouble-card:hover { border-color: var(--navy); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.trouble-icon { font-size: 26px; flex-shrink: 0; line-height: 1; margin-top: 3px; }
-.trouble-text strong { display: block; font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+.trouble-card:hover { border-color: var(--purple); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.trouble-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+.trouble-text strong { display: block; font-size: 14px; font-weight: 700; color: var(--purple-dark); margin-bottom: 3px; }
 .trouble-text span { font-size: 12.5px; color: var(--text-mid); line-height: 1.65; }
-
 .troubles-resolve {
-  text-align: center;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
-  border-radius: var(--radius); padding: 36px 28px;
+  margin-top: 40px; text-align: center;
+  background: var(--grad); border-radius: var(--radius-lg); padding: 36px 28px;
   box-shadow: var(--shadow-lg);
 }
-.troubles-resolve p { font-size: clamp(16px, 3vw, 22px); font-weight: 700; color: white; line-height: 1.6; }
-.troubles-resolve strong { color: var(--gold); font-size: clamp(20px, 4vw, 28px); font-weight: 900; }
+.troubles-resolve p { font-size: clamp(16px, 3vw, 22px); font-weight: 700; color: white; line-height: 1.65; }
+.troubles-resolve strong { font-size: clamp(20px, 4vw, 28px); color: var(--orange); }
 
-/* ===== ABOUT ===== */
-.about { padding: 88px 0; }
-.about-inner { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
-@media (min-width: 860px) { .about-inner { grid-template-columns: 1fr 1fr; } }
+/* ===== STATS ===== */
+.stats-section {
+  padding: 88px 20px;
+  background: var(--grad);
+  text-align: center; position: relative; overflow: hidden;
+}
+.stats-section::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.10) 0%, transparent 65%);
+}
+.stats-headline { font-size: clamp(14px, 2.5vw, 18px); color: rgba(255,255,255,.85); font-weight: 500; margin-bottom: 8px; }
+.stats-headline strong { color: white; font-weight: 700; background: rgba(255,255,255,.2); padding: 2px 10px; border-radius: 6px; }
+.stats-big { font-size: clamp(52px, 12vw, 96px); font-weight: 900; color: white; line-height: 1.1; margin-bottom: 6px; letter-spacing: -.03em; }
+.stats-sub { font-size: 16px; color: rgba(255,255,255,.75); margin-bottom: 48px; }
+.stats-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto 44px; position: relative; z-index: 2; }
+.stats-card {
+  background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.22);
+  border-radius: var(--radius); padding: 24px 20px; text-align: center; backdrop-filter: blur(8px);
+}
+.stats-card-icon { font-size: 32px; display: block; margin-bottom: 10px; }
+.stats-card-title { font-size: 16px; font-weight: 700; color: white; margin-bottom: 6px; }
+.stats-card-desc { font-size: 12px; color: rgba(255,255,255,.65); line-height: 1.7; }
 
-.about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-.about-tag {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--bg); border: 2px solid var(--navy);
-  border-radius: 12px; padding: 12px 18px; font-size: 14px; font-weight: 700; color: var(--navy);
-  transition: all .2s;
+/* ===== FEATURES 01-04 ===== */
+.features { padding: 88px 0; background: var(--bg); }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 52px; }
+.feature-card {
+  background: var(--grad); border-radius: var(--radius-lg);
+  padding: 32px 28px 28px; position: relative; overflow: hidden;
+  box-shadow: var(--shadow-lg); transition: transform .3s;
 }
-.about-tag:hover { background: var(--navy); color: white; }
-.about-tag span { font-size: 20px; }
+.feature-card:hover { transform: translateY(-6px); }
+.feature-num {
+  position: absolute; top: -10px; right: 10px;
+  font-size: 100px; font-weight: 900; color: rgba(255,255,255,.10); line-height: 1;
+}
+.feature-tag { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: rgba(255,255,255,.7); margin-bottom: 10px; }
+.feature-title { font-size: 20px; font-weight: 900; color: white; line-height: 1.4; margin-bottom: 16px; }
+.feature-icon { font-size: 40px; display: block; margin-bottom: 14px; }
+.feature-body { font-size: 13px; color: rgba(255,255,255,.8); line-height: 1.8; margin-bottom: 16px; }
+.feature-arrow { color: rgba(255,255,255,.6); font-size: 20px; display: block; margin-bottom: 8px; text-align: center; }
+.feature-result {
+  background: rgba(255,255,255,.15); border-radius: 10px; padding: 12px 14px;
+  font-size: 13px; font-weight: 700; color: white; text-align: center; line-height: 1.5;
+}
 
-.about-card {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-  border-radius: var(--radius); padding: 36px 32px;
-  box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+/* ===== FREE SUPPORT ===== */
+.free-section { padding: 88px 0; }
+.free-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 52px; }
+.free-card {
+  background: white; border-radius: var(--radius-lg);
+  padding: 36px 28px; text-align: center;
+  box-shadow: var(--shadow); border: 2px solid var(--border); transition: all .3s;
 }
-.about-card::after {
-  content: '支'; position: absolute; right: -20px; bottom: -20px;
-  font-size: 160px; font-weight: 900; color: rgba(255,255,255,.05);
-  line-height: 1; pointer-events: none;
-}
-.about-card-title { font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: .12em; margin-bottom: 20px; }
-.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.about-stat {
-  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
-  border-radius: 14px; padding: 18px 14px; text-align: center;
-}
-.about-stat-num { font-size: 28px; font-weight: 900; color: var(--gold); display: block; line-height: 1; margin-bottom: 6px; }
-.about-stat-label { font-size: 11px; color: rgba(255,255,255,.65); font-weight: 500; }
-.about-note { font-size: 12px; color: rgba(255,255,255,.5); margin-top: 18px; line-height: 1.8; }
+.free-card:hover { border-color: var(--purple); transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.free-card-icon { font-size: 48px; display: block; margin-bottom: 14px; }
+.free-card-title { font-size: 18px; font-weight: 900; color: var(--purple-dark); margin-bottom: 10px; line-height: 1.45; }
+.free-card-title .hl { background: var(--purple); color: white; padding: 2px 10px; border-radius: 6px; }
+.free-card-desc { font-size: 13px; color: var(--text-mid); line-height: 1.8; }
+.free-big { font-size: 64px; font-weight: 900; color: var(--purple); display: block; line-height: 1; margin: 12px 0; }
+.free-big-sub { font-size: 13px; color: var(--text-light); }
 
 /* ===== FLOW ===== */
 .flow { padding: 88px 0; background: var(--bg); }
-.flow-steps { max-width: 680px; margin: 52px auto 0; display: flex; flex-direction: column; }
-.flow-step {
-  display: flex; align-items: flex-start; gap: 20px;
-  padding: 0 0 36px; position: relative;
-}
+.flow-steps { max-width: 660px; margin: 52px auto 0; display: flex; flex-direction: column; }
+.flow-step { display: flex; align-items: flex-start; gap: 18px; padding: 0 0 34px; position: relative; }
 .flow-step:not(:last-child)::after {
-  content: ''; position: absolute; left: 24px; top: 50px; bottom: 0;
-  width: 2px; background: linear-gradient(180deg, var(--gold), rgba(255,184,0,.15));
+  content: ''; position: absolute; left: 23px; top: 48px; bottom: 0;
+  width: 2px; background: linear-gradient(180deg, var(--purple), rgba(107,71,220,.15));
 }
 .step-num {
-  width: 50px; height: 50px; border-radius: 50%; flex-shrink: 0;
-  background: var(--navy); color: white;
+  width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+  background: var(--grad); color: white;
   display: flex; align-items: center; justify-content: center;
   font-size: 18px; font-weight: 900; position: relative; z-index: 2;
-  box-shadow: 0 4px 16px rgba(30,45,94,.28); transition: background .2s;
+  box-shadow: 0 4px 14px rgba(107,71,220,.35);
 }
-.flow-step:hover .step-num { background: var(--gold); color: var(--navy-dark); }
-.step-content { padding-top: 8px; }
-.step-label { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: .1em; margin-bottom: 5px; }
-.step-title { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.step-content { padding-top: 7px; }
+.step-label { font-size: 11px; font-weight: 700; color: var(--purple); letter-spacing: .1em; margin-bottom: 4px; }
+.step-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
 .step-desc { font-size: 13px; color: var(--text-mid); line-height: 1.8; }
 
-/* ===== PRICING ===== */
-.pricing { padding: 88px 0; }
-.pricing-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 22px; margin-top: 52px;
-}
-.pricing-card {
-  background: white; border-radius: var(--radius);
-  border: 2px solid var(--border); overflow: hidden;
-  box-shadow: var(--shadow); transition: all .3s; position: relative;
-  display: flex; flex-direction: column;
-}
-.pricing-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--navy); }
-.pricing-card.featured {
-  border-color: var(--gold); box-shadow: 0 8px 40px rgba(255,184,0,.22);
-}
-.pricing-card.featured:hover { box-shadow: 0 12px 56px rgba(255,184,0,.32); }
-.pricing-badge {
-  position: absolute; top: 0; right: 0;
-  background: var(--gold); color: var(--navy-dark);
-  font-size: 11px; font-weight: 700; padding: 6px 16px;
-  border-radius: 0 var(--radius) 0 14px; letter-spacing: .05em;
-}
-.pricing-head {
-  padding: 30px 26px 22px;
-  border-bottom: 1px solid var(--border);
-}
-.pricing-card.featured .pricing-head { background: var(--gold-light); }
-.pricing-plan { font-size: 13px; font-weight: 700; color: var(--text-mid); letter-spacing: .08em; margin-bottom: 6px; }
-.pricing-name { font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 12px; }
-.pricing-price { font-size: 36px; font-weight: 900; color: var(--navy-dark); line-height: 1; }
-.pricing-price small { font-size: 14px; font-weight: 500; color: var(--text-mid); }
-.pricing-desc { font-size: 12px; color: var(--text-mid); margin-top: 10px; line-height: 1.7; background: var(--bg); padding: 10px 14px; border-radius: 10px; }
-.pricing-body { padding: 22px 26px 26px; flex: 1; display: flex; flex-direction: column; }
-.pricing-list { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-.pricing-list li {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 13px; color: var(--text); line-height: 1.5;
-}
-.pricing-list li::before {
-  content: '✓'; width: 20px; height: 20px; border-radius: 50%;
-  background: var(--navy); color: white; font-size: 11px; font-weight: 900;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; margin-top: 1px;
-}
-.pricing-card.featured .pricing-list li::before { background: var(--gold); color: var(--navy-dark); }
-.pricing-who { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border); }
-.pricing-who-title { font-size: 11px; font-weight: 700; color: var(--text-mid); letter-spacing: .08em; margin-bottom: 8px; }
-.pricing-who-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.pricing-who-tag { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 11.5px; color: var(--text-mid); font-weight: 500; }
-
-/* ===== SUPPORT PROGRAMS ===== */
-.support { padding: 88px 0; background: var(--bg); }
-.support-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 52px; }
-.support-card {
-  background: white; border-radius: var(--radius);
-  overflow: hidden; box-shadow: var(--shadow); transition: all .3s;
-}
-.support-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-.support-head {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-  padding: 28px 24px 22px; position: relative; overflow: hidden;
-}
-.support-head::after {
-  content: '¥'; position: absolute; right: 16px; bottom: -8px;
-  font-size: 80px; font-weight: 900; color: rgba(255,255,255,.07); line-height: 1;
-}
-.support-icon { font-size: 32px; display: block; margin-bottom: 10px; }
-.support-plan { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: .1em; margin-bottom: 6px; }
-.support-name { font-size: 18px; font-weight: 700; color: white; margin-bottom: 8px; line-height: 1.4; }
-.support-amount { font-size: 32px; font-weight: 900; color: var(--gold); line-height: 1; }
-.support-amount small { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.65); }
-.support-body { padding: 20px 24px 24px; }
-.support-conditions { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.support-conditions li {
-  display: flex; align-items: flex-start; gap: 8px;
-  font-size: 13px; color: var(--text-mid); line-height: 1.5;
-}
-.support-conditions li::before { content: '•'; color: var(--gold); font-size: 18px; line-height: 1.1; flex-shrink: 0; }
-.support-note { font-size: 11.5px; color: var(--text-light); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); line-height: 1.7; }
-
-/* ===== STRENGTHS ===== */
-.strengths { padding: 88px 0; }
-.strengths-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 52px; }
-.strength-card {
-  background: white; border-radius: var(--radius);
-  padding: 32px 22px; text-align: center;
-  box-shadow: var(--shadow); border: 2px solid transparent;
-  position: relative; overflow: hidden; transition: all .3s;
-}
-.strength-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 5px; background: linear-gradient(90deg, var(--navy), var(--gold));
-}
-.strength-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-.strength-num {
-  font-size: 11px; font-weight: 700; letter-spacing: .1em;
-  color: var(--gold); margin-bottom: 12px;
-}
-.strength-icon { font-size: 38px; display: block; margin-bottom: 14px; }
-.strength-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.5; }
-.strength-desc { font-size: 12.5px; color: var(--text-mid); line-height: 1.75; }
-
 /* ===== VOICES ===== */
-.voices { padding: 88px 0; background: var(--bg); }
-.voices-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; margin-top: 52px; }
+.voices { padding: 88px 0; }
+.voices-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 52px; }
 .voice-card {
-  background: white; border-radius: var(--radius);
-  padding: 28px 24px; box-shadow: var(--shadow); position: relative;
-  border-bottom: 4px solid var(--gold);
+  background: white; border-radius: var(--radius-lg);
+  padding: 28px 24px; box-shadow: var(--shadow);
+  border-top: 4px solid var(--purple); position: relative;
 }
 .voice-card::before {
-  content: '"'; position: absolute; top: 14px; left: 18px;
-  font-size: 72px; font-weight: 900; color: var(--navy);
-  opacity: .07; line-height: 1; font-family: serif;
+  content: '"'; position: absolute; top: 12px; left: 18px;
+  font-size: 72px; font-weight: 900; color: var(--purple);
+  opacity: .08; line-height: 1; font-family: serif;
 }
-.voice-stars { color: var(--gold); font-size: 15px; margin-bottom: 12px; }
-.voice-age { font-size: 12px; font-weight: 700; color: var(--orange); margin-bottom: 10px; }
+.voice-stars { color: #FFB800; font-size: 14px; margin-bottom: 8px; }
+.voice-profile {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--purple-light); color: var(--purple-dark);
+  font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 12px;
+}
 .voice-text { font-size: 13.5px; color: var(--text); line-height: 1.85; margin-bottom: 18px; }
-.voice-person {
-  display: flex; align-items: center; gap: 10px;
-  padding-top: 14px; border-top: 1px solid var(--border);
-}
-.voice-avatar {
-  width: 40px; height: 40px; background: var(--gold-light); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; font-size: 20px;
-}
-.voice-name { font-size: 13px; font-weight: 700; color: var(--navy); }
+.voice-person { display: flex; align-items: center; gap: 10px; padding-top: 14px; border-top: 1px solid var(--border); }
+.voice-avatar { width: 40px; height: 40px; background: var(--purple-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.voice-name { font-size: 13px; font-weight: 700; color: var(--text); }
 .voice-attr { font-size: 11px; color: var(--text-light); margin-top: 2px; }
 
 /* ===== FAQ ===== */
-.faq { padding: 88px 0; }
+.faq { padding: 88px 0; background: var(--bg); }
 .faq-list { max-width: 720px; margin: 52px auto 0; display: flex; flex-direction: column; gap: 12px; }
-.faq-item {
-  background: white; border-radius: var(--radius);
-  border: 2px solid var(--border); overflow: hidden;
-  box-shadow: var(--shadow); transition: border-color .2s;
-}
-.faq-item.open { border-color: var(--navy); }
-.faq-q {
-  display: flex; align-items: center; gap: 14px;
-  padding: 18px 20px; cursor: pointer; user-select: none;
-}
-.faq-q-icon {
-  width: 30px; height: 30px; border-radius: 50%;
-  background: var(--navy); color: white;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; font-weight: 900; flex-shrink: 0;
-}
+.faq-item { background: white; border-radius: var(--radius); border: 2px solid var(--border); overflow: hidden; box-shadow: var(--shadow); transition: border-color .2s; }
+.faq-item.open { border-color: var(--purple); }
+.faq-q { display: flex; align-items: center; gap: 14px; padding: 18px 20px; cursor: pointer; user-select: none; }
+.faq-q-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--grad); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 900; flex-shrink: 0; }
 .faq-q-text { font-size: 14px; font-weight: 700; color: var(--text); flex: 1; line-height: 1.5; }
-.faq-toggle {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--bg); display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: var(--navy); transition: transform .3s; flex-shrink: 0;
-}
+.faq-toggle { width: 26px; height: 26px; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--purple); transition: transform .3s; flex-shrink: 0; }
 .faq-item.open .faq-toggle { transform: rotate(45deg); }
-.faq-a {
-  padding: 0 20px; max-height: 0; overflow: hidden;
-  transition: max-height .4s ease, padding .3s ease;
-  font-size: 13.5px; color: var(--text-mid); line-height: 1.85;
-}
+.faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s ease; font-size: 13.5px; color: var(--text-mid); line-height: 1.85; }
 .faq-item.open .faq-a { max-height: 200px; padding: 0 20px 20px; }
 
-/* ===== CTA ===== */
+/* ===== CTA SECTION ===== */
 .cta-section {
-  padding: 100px 20px;
-  background: linear-gradient(140deg, #050E2A 0%, #0D1B3E 50%, #1E2D5E 100%);
-  text-align: center; position: relative; overflow: hidden;
+  padding: 100px 20px; text-align: center; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #1a0a3e 0%, #2d1b69 50%, #4a2fa0 100%);
 }
 .cta-section::before {
   content: ''; position: absolute; top: -80px; right: -80px;
-  width: 440px; height: 440px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,184,0,.12) 0%, transparent 65%);
-}
-.cta-section::after {
-  content: ''; position: absolute; bottom: -80px; left: -40px;
-  width: 360px; height: 360px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(6,199,85,.10) 0%, transparent 65%);
+  width: 480px; height: 480px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,101,53,.18) 0%, transparent 65%);
 }
 .cta-inner { position: relative; z-index: 2; }
-.cta-title {
-  font-size: clamp(28px, 5vw, 44px); font-weight: 900;
-  color: white; line-height: 1.35; margin-bottom: 14px;
-}
-.cta-title em { color: var(--gold); font-style: normal; }
-.cta-desc { font-size: 15px; color: rgba(255,255,255,.82); line-height: 1.9; margin-bottom: 38px; }
+.cta-title { font-size: clamp(26px, 5vw, 42px); font-weight: 900; color: white; line-height: 1.35; margin-bottom: 14px; }
+.cta-desc { font-size: 15px; color: rgba(255,255,255,.8); line-height: 1.9; margin-bottom: 38px; }
 .cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 .cta-note { font-size: 12px; color: rgba(255,255,255,.5); margin-top: 18px; }
 
 /* ===== FOOTER ===== */
-.footer { background: var(--navy-dark); color: rgba(255,255,255,.65); padding: 60px 0 28px; }
-.footer-inner { display: grid; grid-template-columns: 1fr; gap: 36px; margin-bottom: 40px; }
+.footer { background: #0D0D1E; color: rgba(255,255,255,.6); padding: 48px 0 24px; }
+.footer-inner { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 36px; }
 @media (min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
-.footer-logo {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 12px; text-decoration: none;
-}
-.footer-logo-icon {
-  width: 32px; height: 32px; background: var(--navy-mid); border-radius: 8px;
-  display: flex; align-items: center; justify-content: center; font-size: 15px;
-}
-.footer-logo-text { font-size: 16px; font-weight: 900; color: white; }
-.footer-by { font-size: 11px; color: rgba(255,255,255,.35); margin-bottom: 12px; }
+.footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; text-decoration: none; }
+.footer-logo-icon { width: 30px; height: 30px; background: var(--grad); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.footer-logo-text { font-size: 15px; font-weight: 900; color: white; }
+.footer-by { font-size: 11px; color: rgba(255,255,255,.3); margin-bottom: 10px; }
 .footer-tagline { font-size: 12.5px; line-height: 1.85; }
-.footer-links-title { font-size: 12px; font-weight: 700; color: white; letter-spacing: .08em; margin-bottom: 14px; }
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { font-size: 13px; color: rgba(255,255,255,.58); text-decoration: none; transition: color .2s; }
-.footer-links a:hover { color: var(--gold); }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,.08); padding-top: 22px;
-  display: flex; flex-wrap: wrap; justify-content: space-between;
-  gap: 10px; font-size: 12px; color: rgba(255,255,255,.3);
-}
+.footer-links-title { font-size: 11px; font-weight: 700; color: white; letter-spacing: .1em; margin-bottom: 12px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--purple-mid); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 12px; color: rgba(255,255,255,.28); }
 .footer-bottom a { color: inherit; text-decoration: none; }
-.footer-bottom a:hover { color: var(--gold); }
+.footer-bottom a:hover { color: var(--purple-mid); }
 
-/* ===== STICKY MOBILE CTA ===== */
-.sticky-cta {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 990;
-  background: white; padding: 10px 14px 18px;
-  box-shadow: 0 -4px 20px rgba(0,0,0,.12); display: flex; gap: 10px;
-}
-.sticky-cta a {
-  flex: 1; text-align: center; font-size: 14px; font-weight: 700;
-  padding: 13px; border-radius: 12px; text-decoration: none;
-}
-.s-line { background: var(--green); color: white; }
-.s-consult { background: var(--navy); color: white; }
+/* ===== STICKY CTA ===== */
+.sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 990; background: white; padding: 10px 14px 18px; box-shadow: 0 -4px 20px rgba(0,0,0,.12); display: flex; gap: 10px; }
+.sticky-cta a { flex: 1; text-align: center; font-size: 14px; font-weight: 700; padding: 13px; border-radius: 12px; text-decoration: none; }
+.s-line { background: var(--orange-grad); color: white; }
+.s-consult { background: var(--purple); color: white; }
 @media (min-width: 768px) { .sticky-cta { display: none; } }
 </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- HEADER -->
 <header class="header">
   <div class="header-inner">
     <a href="#" class="logo">
       <div class="logo-icon">🏙️</div>
-      <div class="logo-text">
-        上京支援センター
-        <small>by 株式会社７PRIDE</small>
-      </div>
+      <div class="logo-text">上京支援センター<small>by 株式会社上京支援センター</small></div>
     </a>
-    <nav>
-      <ul class="nav-list">
-        <li><a href="#troubles">お悩み</a></li>
-        <li><a href="#flow">利用の流れ</a></li>
-        <li><a href="#pricing">プラン</a></li>
-        <li><a href="#voices">口コミ</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </nav>
+    <nav><ul class="nav-list">
+      <li><a href="#troubles">お悩み</a></li>
+      <li><a href="#features">サービス</a></li>
+      <li><a href="#flow">利用の流れ</a></li>
+      <li><a href="#voices">口コミ</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul></nav>
     <div style="display:flex;align-items:center;gap:10px;">
-      <a href="line-survey.html" class="btn-header">📋 無料相談する</a>
-      <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="line-survey.html" class="btn-orange" style="font-size:13px;padding:10px 20px;">📋 無料相談する</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -568,162 +373,194 @@ body {
 <div class="mobile-menu" id="mobile-menu">
   <ul>
     <li><a href="#troubles" onclick="closeMenu()">お悩み</a></li>
+    <li><a href="#features" onclick="closeMenu()">サービス</a></li>
     <li><a href="#flow"     onclick="closeMenu()">利用の流れ</a></li>
-    <li><a href="#pricing"  onclick="closeMenu()">プラン</a></li>
     <li><a href="#voices"   onclick="closeMenu()">口コミ</a></li>
     <li><a href="#faq"      onclick="closeMenu()">FAQ</a></li>
   </ul>
-  <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px;">
-    <a href="line-survey.html" class="btn-green" style="justify-content:center;border-radius:12px;padding:13px;">📋 LINEで無料相談する</a>
-    <a href="reservation.html" class="btn-gold"  style="justify-content:center;border-radius:12px;padding:13px;">📅 無料面談を予約する</a>
-  </div>
+  <a href="line-survey.html" class="btn-orange" style="display:block;text-align:center;border-radius:12px;padding:13px;">📋 LINEで無料相談する</a>
 </div>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-badge">🏙️ 上京特化型ワンストップ支援サービス</div>
     <h1 class="hero-headline">
-      人生を変える、<br><em>すべてのきっかけを。</em>
+      「このままで<br>いいのかな…」<br><em>上京したいあなたへ。</em>
     </h1>
-    <p class="hero-sub">上京・仕事・住まいを、ひとつの支援で。</p>
-    <p class="hero-desc">
-      上京支援センターは、仕事探しから住まい、新生活まで<br>
-      あなたの挑戦をワンストップで全力サポートします。
-    </p>
+    <p class="hero-sub">仕事も家も新生活も、まとめてサポートします。</p>
+    <p class="hero-desc">地方から東京への一歩を踏み出したい方へ。<br>上京支援センターが、あなたの挑戦を全力で後押しします。</p>
     <div class="hero-cta">
-      <a href="line-survey.html" class="btn-green" style="font-size:16px;padding:18px 36px;">📋 LINEで無料相談する</a>
-      <a href="reservation.html" class="btn-gold"  style="font-size:16px;padding:18px 36px;">📅 無料面談を予約する</a>
+      <a href="line-survey.html" class="btn-orange" style="font-size:16px;padding:18px 38px;">📋 LINEで無料相談する</a>
+      <a href="reservation.html" class="btn-outline">📅 無料面談を予約する</a>
     </div>
     <div class="hero-points">
-      <div class="hero-point">✅ 未経験OK</div>
-      <div class="hero-point">🏠 寮・社宅付き案件あり</div>
-      <div class="hero-point">💰 初期費用サポート</div>
-      <div class="hero-point">📱 LINEで無料相談可能</div>
+      <div class="hero-point">✅ サポートは実質無料</div>
+      <div class="hero-point">⚡ 即日対応</div>
+      <div class="hero-point">🌐 全国オンライン対応</div>
+      <div class="hero-point">🤝 専任担当制</div>
     </div>
   </div>
   <div class="scroll-hint">SCROLL</div>
 </section>
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 50" preserveAspectRatio="none"
-  style="display:block;height:44px;background:#050E2A;margin-top:-1px;">
-  <path fill="#F5F7FA" d="M0,50L80,40C160,30,320,10,480,6C640,2,800,14,960,24C1120,34,1280,40,1360,44L1440,46L1440,50L0,50Z"/>
-</svg>
-
-<!-- ===== TROUBLES ===== -->
+<!-- TROUBLES -->
 <section class="troubles" id="troubles">
   <div class="container">
-    <div class="troubles-intro">
-      <div class="section-tag">TROUBLE</div>
-      <h2 class="section-title center">こんな悩み、<span class="accent">ありませんか？</span></h2>
-      <div class="section-divider"></div>
+    <div class="section-header">
+      <div class="pill">TROUBLE</div>
+      <h2 class="section-title">こんな悩み、<span class="hl">ありませんか？</span></h2>
+      <p class="section-lead">その悩み、一人で抱え込まないでください。</p>
     </div>
     <div class="troubles-grid">
       <div class="trouble-card fade-up">
         <div class="trouble-icon">🗾</div>
-        <div class="trouble-text">
-          <strong>地方だと将来が見えない</strong>
-          <span>このままここにいても、自分の可能性を広げられる気がしない</span>
-        </div>
-      </div>
-      <div class="trouble-card fade-up">
-        <div class="trouble-icon">🔄</div>
-        <div class="trouble-text">
-          <strong>今の環境を変えたい</strong>
-          <span>仕事・人間関係・生活水準…まるごと変えてリスタートしたい</span>
-        </div>
+        <div class="trouble-text"><strong>地方だと将来が見えない</strong><span>このままここにいても、可能性を広げられる気がしない</span></div>
       </div>
       <div class="trouble-card fade-up">
         <div class="trouble-icon">🗼</div>
-        <div class="trouble-text">
-          <strong>東京で挑戦したい</strong>
-          <span>東京で働きたい気持ちはあるけど、どこから手をつけていいか…</span>
-        </div>
+        <div class="trouble-text"><strong>東京で働きたいけど怖い</strong><span>上京したい気持ちはあるのに、何から始めればいいかわからない</span></div>
       </div>
       <div class="trouble-card fade-up">
         <div class="trouble-icon">💸</div>
-        <div class="trouble-text">
-          <strong>お金・初期費用が心配</strong>
-          <span>貯金が少なく、上京にかかる費用を考えると踏み出せない</span>
-        </div>
+        <div class="trouble-text"><strong>お金・初期費用が心配</strong><span>貯金が少なく、上京にかかる費用を考えると踏み出せない</span></div>
       </div>
       <div class="trouble-card fade-up">
-        <div class="trouble-icon">📋</div>
-        <div class="trouble-text">
-          <strong>上京の流れがわからない</strong>
-          <span>仕事・家・手続き…何から始めていいか全部バラバラで混乱</span>
-        </div>
+        <div class="trouble-icon">💼</div>
+        <div class="trouble-text"><strong>仕事の探し方がわからない</strong><span>どんな求人を選べばいいか、面接対策も自信がない</span></div>
+      </div>
+      <div class="trouble-card fade-up">
+        <div class="trouble-icon">🏠</div>
+        <div class="trouble-text"><strong>家の探し方がわからない</strong><span>物件探し・初期費用・手続きが不安で動けない</span></div>
       </div>
       <div class="trouble-card fade-up">
         <div class="trouble-icon">😟</div>
-        <div class="trouble-text">
-          <strong>一人だと不安・失敗が怖い</strong>
-          <span>知り合いもいない、失敗したら終わりそうで怖くて動けない</span>
-        </div>
+        <div class="trouble-text"><strong>一人だと不安・失敗が怖い</strong><span>知り合いもいない東京で、うまくやっていけるか不安</span></div>
       </div>
     </div>
     <div class="troubles-resolve fade-up">
-      <p>その悩み、<br><strong>上京支援センターがまとめてサポートします。</strong></p>
+      <p>その悩み、<br><strong>上京支援センターがまとめて解決します。</strong></p>
     </div>
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
-<section class="about" id="about">
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container" style="position:relative;z-index:2;">
+    <p class="stats-headline">上京支援センターなら <strong>ワンストップ</strong> で対応できる</p>
+    <div class="stats-big">4つ</div>
+    <p class="stats-sub">のサポートをまとめて提供</p>
+    <div class="stats-cards">
+      <div class="stats-card fade-up">
+        <span class="stats-card-icon">💼</span>
+        <div class="stats-card-title">就職・転職支援</div>
+        <div class="stats-card-desc">求人紹介から内定まで一気通貫でサポート</div>
+      </div>
+      <div class="stats-card fade-up">
+        <span class="stats-card-icon">🏠</span>
+        <div class="stats-card-title">住まい探し支援</div>
+        <div class="stats-card-desc">物件選びから入居手続きまでお任せ</div>
+      </div>
+      <div class="stats-card fade-up">
+        <span class="stats-card-icon">⚡</span>
+        <div class="stats-card-title">新生活セットアップ</div>
+        <div class="stats-card-desc">電気・ガス・Wi-Fiをまとめて手配</div>
+      </div>
+      <div class="stats-card fade-up">
+        <span class="stats-card-icon">🤝</span>
+        <div class="stats-card-title">上京後フォロー</div>
+        <div class="stats-card-desc">定着まで専任担当が継続サポート</div>
+      </div>
+    </div>
+    <a href="line-survey.html" class="btn-orange">📋 LINEで無料相談する →</a>
+  </div>
+</section>
+
+<!-- FEATURES 01-04 -->
+<section class="features" id="features">
   <div class="container">
-    <div class="about-inner">
-      <div class="fade-up">
-        <div class="section-tag">ABOUT US</div>
-        <h2 class="section-title">上京支援センター<br><span class="accent">とは？</span></h2>
-        <div class="section-divider left"></div>
-        <p class="section-lead" style="margin-top:18px;">
-          仕事紹介だけではなく、<strong>転職支援・住まい探し・ライフライン手続き・新生活サポート・上京後フォロー</strong>まで一括対応する、<em>上京特化型サポートサービス</em>です。
-        </p>
-        <div class="about-tags">
-          <div class="about-tag"><span>💼</span> 転職支援</div>
-          <div class="about-tag"><span>🏠</span> 住まい探し</div>
-          <div class="about-tag"><span>⚡</span> ライフライン手続き</div>
-          <div class="about-tag"><span>🌱</span> 新生活サポート</div>
-          <div class="about-tag"><span>🤝</span> 上京後フォロー</div>
-        </div>
+    <div class="section-header">
+      <div class="pill">SERVICE</div>
+      <h2 class="section-title">あなたの上京を支える<br><span class="hl">4つのサポート</span></h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="feature-num">01</div>
+        <div class="feature-tag">JOB SUPPORT</div>
+        <span class="feature-icon">💼</span>
+        <div class="feature-title">就職・転職支援</div>
+        <p class="feature-body">未経験OK・学歴不問の求人も多数。キャリア相談から面接対策・書類添削まで、内定まで全力で伴走します。</p>
+        <span class="feature-arrow">▼</span>
+        <div class="feature-result">希望に合った仕事が見つかり、スムーズに内定できる</div>
       </div>
-      <div class="about-card fade-up">
-        <div class="about-card-title">SUPPORT RECORD</div>
-        <div class="about-stats">
-          <div class="about-stat">
-            <span class="about-stat-num">無料</span>
-            <div class="about-stat-label">完全無料サポート</div>
-          </div>
-          <div class="about-stat">
-            <span class="about-stat-num">即日</span>
-            <div class="about-stat-label">スピード対応</div>
-          </div>
-          <div class="about-stat">
-            <span class="about-stat-num">1対1</span>
-            <div class="about-stat-label">専任担当制</div>
-          </div>
-          <div class="about-stat">
-            <span class="about-stat-num">全国</span>
-            <div class="about-stat-label">オンライン対応</div>
-          </div>
-        </div>
-        <p class="about-note">
-          未経験OK・学歴職歴不問の求人も多数。<br>
-          スマホ1台で相談から上京まで完結できます。
-        </p>
+      <div class="feature-card fade-up">
+        <div class="feature-num">02</div>
+        <div class="feature-tag">HOUSING SUPPORT</div>
+        <span class="feature-icon">🏠</span>
+        <div class="feature-title">住まい探し支援</div>
+        <p class="feature-body">内定先の近く・家賃相場に合った物件を厳選してご提案。初期費用の抑え方から入居手続きまでサポートします。</p>
+        <span class="feature-arrow">▼</span>
+        <div class="feature-result">安心して住める家が決まり、上京の不安がなくなる</div>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-num">03</div>
+        <div class="feature-tag">LIFE SUPPORT</div>
+        <span class="feature-icon">⚡</span>
+        <div class="feature-title">新生活セットアップ</div>
+        <p class="feature-body">電気・ガス・Wi-Fiなど引っ越し後の面倒な手続きをまとめてサポート。新生活をすぐにスタートできます。</p>
+        <span class="feature-arrow">▼</span>
+        <div class="feature-result">手続きの手間なし、すぐに快適な新生活が始められる</div>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-num">04</div>
+        <div class="feature-tag">FOLLOW SUPPORT</div>
+        <span class="feature-icon">🤝</span>
+        <div class="feature-title">上京後フォロー</div>
+        <p class="feature-body">入社して終わりではありません。仕事・生活・人間関係など、上京後の不安も専任担当が定着まで伴走します。</p>
+        <span class="feature-arrow">▼</span>
+        <div class="feature-result">一人じゃない安心感で、新生活を自信をもって歩める</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== FLOW ===== -->
+<!-- FREE SUPPORT -->
+<section class="free-section" id="free">
+  <div class="container">
+    <div class="section-header">
+      <div class="pill">COST</div>
+      <h2 class="section-title">上京支援センターが<br>選ばれる理由はここにも</h2>
+    </div>
+    <div class="free-cards">
+      <div class="free-card fade-up">
+        <span class="free-card-icon">💚</span>
+        <div class="free-card-title">サポートは<br><span class="hl">実質無料</span></div>
+        <span class="free-big">¥0</span>
+        <p class="free-card-desc">相談・求人紹介・面接対策・物件紹介・ライフライン手配まで、すべてのサポートを実質無料でご提供しています。詳しくは無料面談でご説明します。</p>
+      </div>
+      <div class="free-card fade-up">
+        <span class="free-card-icon">⚡</span>
+        <div class="free-card-title">相談したら<br><span class="hl">即日対応</span></div>
+        <span class="free-big">当日</span>
+        <p class="free-card-desc">人生を変えたいと思ったその日に動ける環境を。お問い合わせから最短当日中に担当者からご連絡します。</p>
+      </div>
+      <div class="free-card fade-up">
+        <span class="free-card-icon">🌐</span>
+        <div class="free-card-title">全国どこからでも<br><span class="hl">オンライン対応</span></div>
+        <span class="free-big">全国</span>
+        <p class="free-card-desc">スマホ1台あればOK。LINE・Zoom・電話など、ご都合に合わせた方法で対応します。移動は一切不要です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
 <section class="flow" id="flow">
   <div class="container">
-    <div style="text-align:center;">
-      <div class="section-tag">FLOW</div>
-      <h2 class="section-title center">ご利用の<span class="accent">流れ</span></h2>
-      <div class="section-divider"></div>
-      <p class="section-lead center" style="margin-top:14px;">最初の一歩は、LINEで相談するだけ</p>
+    <div class="section-header">
+      <div class="pill">FLOW</div>
+      <h2 class="section-title">ご利用の<span class="hl">流れ</span></h2>
+      <p class="section-lead">最初の一歩は、LINEで相談するだけ</p>
     </div>
     <div class="flow-steps">
       <div class="flow-step fade-up">
@@ -731,319 +568,118 @@ body {
         <div class="step-content">
           <div class="step-label">STEP 01</div>
           <div class="step-title">LINE追加・無料相談</div>
-          <p class="step-desc">現在の状況や希望条件をヒアリング。スマホで完結、何でも気軽に相談できます。</p>
+          <p class="step-desc">現在の状況や希望をヒアリング。スマホで完結、気軽に相談できます。</p>
         </div>
       </div>
       <div class="flow-step fade-up">
         <div class="step-num">2</div>
         <div class="step-content">
           <div class="step-label">STEP 02</div>
-          <div class="step-title">キャリア相談</div>
-          <p class="step-desc">仕事の方向性・希望エリア・上京時期など、あなたの状況を整理して最適な求人を絞り込みます。</p>
+          <div class="step-title">無料面談（オンライン・約30分）</div>
+          <p class="step-desc">専任スタッフが丁寧にヒアリング。仕事・住まい・上京時期などを一緒に整理します。</p>
         </div>
       </div>
       <div class="flow-step fade-up">
         <div class="step-num">3</div>
         <div class="step-content">
           <div class="step-label">STEP 03</div>
-          <div class="step-title">求人紹介・面接対策</div>
-          <p class="step-desc">未経験歓迎・寮付き求人も多数。書類添削から面接対策まで徹底サポートします。</p>
+          <div class="step-title">求人・物件のご提案</div>
+          <p class="step-desc">ヒアリング内容をもとに、あなたに合った求人・物件を厳選。何度でも相談できます。</p>
         </div>
       </div>
       <div class="flow-step fade-up">
         <div class="step-num">4</div>
         <div class="step-content">
           <div class="step-label">STEP 04</div>
-          <div class="step-title">住まい確定</div>
-          <p class="step-desc">寮・社宅付き案件にも対応。内定先の近くで初期費用を抑えた物件を提案します。</p>
+          <div class="step-title">面接対策・書類サポート</div>
+          <p class="step-desc">履歴書添削・面接対策・日程調整まで全面サポート。はじめての方でも安心です。</p>
         </div>
       </div>
       <div class="flow-step fade-up">
         <div class="step-num">5</div>
         <div class="step-content">
           <div class="step-label">STEP 05</div>
-          <div class="step-title">ライフライン手続き</div>
-          <p class="step-desc">Wi-Fi・電気・ガスなど、引っ越し後の面倒な手続きもまとめてサポートします。</p>
+          <div class="step-title">就職・入居の手続き</div>
+          <p class="step-desc">内定・入居が決まったら、ライフラインの手配もまとめてお任せください。</p>
         </div>
       </div>
       <div class="flow-step fade-up">
         <div class="step-num">6</div>
         <div class="step-content">
           <div class="step-label">STEP 06</div>
-          <div class="step-title">上京・入社</div>
-          <p class="step-desc">いよいよ新生活スタート。不安なことがあれば何でも連絡してください。</p>
+          <div class="step-title">上京・新生活スタート</div>
+          <p class="step-desc">いよいよ東京での新生活のはじまりです。不安なことはいつでも相談できます。</p>
         </div>
       </div>
       <div class="flow-step fade-up">
         <div class="step-num">7</div>
         <div class="step-content">
           <div class="step-label">STEP 07</div>
-          <div class="step-title">上京後フォロー</div>
-          <p class="step-desc">入社して終わりではありません。定着まで継続して伴走します。困ったことは何でも相談できます。</p>
+          <div class="step-title">定着まで継続フォロー</div>
+          <p class="step-desc">入社後も担当者が伴走。仕事・生活の悩みをいつでも相談できる環境を提供します。</p>
         </div>
       </div>
     </div>
     <div style="text-align:center;margin-top:44px;">
-      <a href="line-survey.html" class="btn-green" style="font-size:16px;padding:18px 40px;">📋 LINEで無料相談をはじめる</a>
+      <a href="line-survey.html" class="btn-orange" style="font-size:16px;padding:18px 40px;">📋 LINEで無料相談をはじめる</a>
     </div>
   </div>
 </section>
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 50" preserveAspectRatio="none"
-  style="display:block;height:44px;background:#F5F7FA;margin-top:-1px;">
-  <path fill="#FFFFFF" d="M0,0L80,10C160,20,320,40,480,46C640,52,800,42,960,32C1120,22,1280,10,1360,8L1440,6L1440,50L0,50Z"/>
-</svg>
-
-<!-- ===== PRICING ===== -->
-<section class="pricing" id="pricing">
-  <div class="container">
-    <div style="text-align:center;">
-      <div class="section-tag">PLAN</div>
-      <h2 class="section-title center">選べる<span class="accent">サポートプラン</span></h2>
-      <div class="section-divider"></div>
-      <p class="section-lead center" style="margin-top:14px;">あなたの状況に合わせて、最適なプランをお選びいただけます</p>
-    </div>
-    <div class="pricing-grid">
-
-      <!-- Light -->
-      <div class="pricing-card fade-up">
-        <div class="pricing-head">
-          <div class="pricing-plan">LIGHT PLAN</div>
-          <div class="pricing-name">ライトプラン</div>
-          <div class="pricing-price">¥12,800<small>（税込）</small></div>
-          <div class="pricing-desc">まずは紹介だけ受けたい方向け</div>
-        </div>
-        <div class="pricing-body">
-          <ul class="pricing-list">
-            <li>求人紹介</li>
-            <li>簡易ヒアリング</li>
-            <li>不動産会社紹介</li>
-            <li>ライフライン案内</li>
-          </ul>
-          <div class="pricing-who">
-            <div class="pricing-who-title">こんな方に</div>
-            <div class="pricing-who-tags">
-              <span class="pricing-who-tag">自分で進められる</span>
-              <span class="pricing-who-tag">費用を抑えたい</span>
-              <span class="pricing-who-tag">最低限でOK</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Standard -->
-      <div class="pricing-card featured fade-up">
-        <div class="pricing-badge">人気No.1</div>
-        <div class="pricing-head">
-          <div class="pricing-plan">STANDARD PLAN</div>
-          <div class="pricing-name">スタンダードプラン</div>
-          <div class="pricing-price">¥24,800<small>（税込）</small></div>
-          <div class="pricing-desc">安心して上京したい方向け</div>
-        </div>
-        <div class="pricing-body">
-          <ul class="pricing-list">
-            <li>詳細ヒアリング</li>
-            <li>面接対策・書類添削</li>
-            <li>進捗管理</li>
-            <li>住まいサポート</li>
-            <li>ライフライン申込支援</li>
-          </ul>
-          <div class="pricing-who">
-            <div class="pricing-who-title">こんな方に</div>
-            <div class="pricing-who-tags">
-              <span class="pricing-who-tag">初めての上京</span>
-              <span class="pricing-who-tag">不安が大きい</span>
-              <span class="pricing-who-tag">失敗リスクを減らしたい</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Premium -->
-      <div class="pricing-card fade-up">
-        <div class="pricing-head">
-          <div class="pricing-plan">PREMIUM PLAN</div>
-          <div class="pricing-name">プレミアムプラン</div>
-          <div class="pricing-price">¥39,800<small>（税込）</small></div>
-          <div class="pricing-desc">全部任せて最短で上京したい方向け</div>
-        </div>
-        <div class="pricing-body">
-          <ul class="pricing-list">
-            <li>個別キャリア設計</li>
-            <li>面接対策無制限</li>
-            <li>日程調整代行</li>
-            <li>優先求人紹介</li>
-            <li>不動産交渉</li>
-            <li>スケジュール完全管理</li>
-            <li>即レス対応</li>
-          </ul>
-          <div class="pricing-who">
-            <div class="pricing-who-title">こんな方に</div>
-            <div class="pricing-who-tags">
-              <span class="pricing-who-tag">絶対に失敗したくない</span>
-              <span class="pricing-who-tag">時間がない</span>
-              <span class="pricing-who-tag">最短で環境を変えたい</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <p style="text-align:center;font-size:12px;color:var(--text-light);margin-top:22px;">
-      ※ まずは無料相談から。プランはご相談後にお選びいただけます。
-    </p>
-  </div>
-</section>
-
-<!-- ===== SUPPORT PROGRAMS ===== -->
-<section class="support" id="support">
-  <div class="container">
-    <div style="text-align:center;">
-      <div class="section-tag">SUPPORT FUND</div>
-      <h2 class="section-title center">上京<span class="accent">サポート制度</span></h2>
-      <div class="section-divider"></div>
-      <p class="section-lead center" style="margin-top:14px;">挑戦するあなたを、金銭面でも全力で後押しします</p>
-    </div>
-    <div class="support-grid">
-
-      <div class="support-card fade-up">
-        <div class="support-head">
-          <span class="support-icon">🚀</span>
-          <div class="support-plan">START SUPPORT</div>
-          <div class="support-name">上京スタート支援金</div>
-          <div class="support-amount">最大<span style="font-size:42px;font-weight:900;"> ¥24,800</span></div>
-        </div>
-        <div class="support-body">
-          <ul class="support-conditions">
-            <li>転職成功</li>
-            <li>賃貸契約完了</li>
-            <li>上京完了</li>
-            <li>入社後6ヶ月継続勤務</li>
-          </ul>
-          <p class="support-note">上記条件をすべて満たした方へ支給。頑張りをしっかり還元します。</p>
-        </div>
-      </div>
-
-      <div class="support-card fade-up">
-        <div class="support-head">
-          <span class="support-icon">🛡️</span>
-          <div class="support-plan">CHALLENGE SUPPORT</div>
-          <div class="support-name">安心チャレンジ給付金</div>
-          <div class="support-amount">最大<span style="font-size:42px;font-weight:900;"> ¥15,000</span></div>
-        </div>
-        <div class="support-body">
-          <ul class="support-conditions">
-            <li>挑戦したが上手くいかなかった場合</li>
-            <li>一定の条件を満たす方が対象</li>
-          </ul>
-          <p class="support-note">※ 自己都合辞退は対象外。詳細は面談時にご確認ください。</p>
-        </div>
-      </div>
-
-      <div class="support-card fade-up">
-        <div class="support-head">
-          <span class="support-icon">💎</span>
-          <div class="support-plan">SPECIAL GRANT</div>
-          <div class="support-name">特別給付制度</div>
-          <div class="support-amount">最大<span style="font-size:42px;font-weight:900;"> ¥39,800</span></div>
-        </div>
-        <div class="support-body">
-          <ul class="support-conditions">
-            <li>当社都合で十分なサポートを提供できなかった場合に適用</li>
-          </ul>
-          <p class="support-note">私たちが責任をもって支援できなかった場合に、最大限の補償をお約束します。</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== STRENGTHS ===== -->
-<section class="strengths" id="strengths">
-  <div class="container">
-    <div style="text-align:center;">
-      <div class="section-tag">WHY US</div>
-      <h2 class="section-title center">上京支援センターの<span class="accent">強み</span></h2>
-      <div class="section-divider"></div>
-    </div>
-    <div class="strengths-grid">
-      <div class="strength-card fade-up">
-        <div class="strength-num">STRENGTH 01</div>
-        <span class="strength-icon">🔗</span>
-        <div class="strength-title">上京×転職×住まいを<br>一括支援</div>
-        <p class="strength-desc">全部別々に探す必要なし。仕事・家・ライフラインをまとめて一社で解決できます。</p>
-      </div>
-      <div class="strength-card fade-up">
-        <div class="strength-num">STRENGTH 02</div>
-        <span class="strength-icon">👥</span>
-        <div class="strength-title">未経験歓迎<br>求人多数</div>
-        <p class="strength-desc">20代向け案件を中心に、学歴・職歴不問で挑戦できる求人を豊富にご用意しています。</p>
-      </div>
-      <div class="strength-card fade-up">
-        <div class="strength-num">STRENGTH 03</div>
-        <span class="strength-icon">📱</span>
-        <div class="strength-title">LINEで完結<br>スマホだけでOK</div>
-        <p class="strength-desc">相談から求人紹介まで、スマホのLINEだけで完結。移動不要のオンライン対応です。</p>
-      </div>
-      <div class="strength-card fade-up">
-        <div class="strength-num">STRENGTH 04</div>
-        <span class="strength-icon">💰</span>
-        <div class="strength-title">初期費用問題を<br>徹底軽減</div>
-        <p class="strength-desc">寮・社宅付き求人や各種支援制度で、お金の不安を抱えた方でも安心して上京できます。</p>
-      </div>
-      <div class="strength-card fade-up">
-        <div class="strength-num">STRENGTH 05</div>
-        <span class="strength-icon">🤝</span>
-        <div class="strength-title">上京後も<br>継続フォロー</div>
-        <p class="strength-desc">入社して終わりではありません。定着まで担当者が継続的に伴走し続けます。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== VOICES ===== -->
+<!-- VOICES -->
 <section class="voices" id="voices">
   <div class="container">
-    <div style="text-align:center;">
-      <div class="section-tag">VOICE</div>
-      <h2 class="section-title center">利用者の<span class="accent">声</span></h2>
-      <div class="section-divider"></div>
+    <div class="section-header">
+      <div class="pill">VOICE</div>
+      <h2 class="section-title">利用者の<span class="hl">声</span></h2>
+      <p class="section-lead">実際に上京を実現した方々からいただいた声をご紹介します</p>
     </div>
     <div class="voices-grid">
       <div class="voice-card fade-up">
         <div class="voice-stars">★★★★★</div>
-        <div class="voice-age">24歳｜福岡 → 東京</div>
-        <p class="voice-text">「住まいも仕事もまとめて相談できて安心でした。一人でやろうとしたら絶対途中で諦めていたと思います。担当の方がいつも親身に対応してくれました。」</p>
+        <div class="voice-profile">23歳・宮城県 → 東京</div>
+        <p class="voice-text">「仕事も家も全部バラバラに探すのが怖くて、ずっと踏み出せなかったんです。でも相談したらその日のうちに担当者の方から連絡が来て、2ヶ月後には東京で働いていました。本当に背中を押してもらえた感じです。」</p>
+        <div class="voice-person">
+          <div class="voice-avatar">👨</div>
+          <div>
+            <div class="voice-name">T・Kさん（23歳・男性）</div>
+            <div class="voice-attr">宮城 → 東京 / 営業職に就職</div>
+          </div>
+        </div>
+      </div>
+      <div class="voice-card fade-up">
+        <div class="voice-stars">★★★★★</div>
+        <div class="voice-profile">25歳・福岡県 → 東京</div>
+        <p class="voice-text">「お金がなくて上京なんて無理だと思っていました。でも初期費用を抑える方法を一緒に考えてくれて、寮付きの仕事も紹介してもらえて。今は東京で充実した生活を送っています。相談して本当によかった！」</p>
         <div class="voice-person">
           <div class="voice-avatar">👩</div>
           <div>
-            <div class="voice-name">Y・Kさん（24歳・女性）</div>
+            <div class="voice-name">S・Aさん（25歳・女性）</div>
             <div class="voice-attr">福岡 → 東京 / 事務職に転職</div>
           </div>
         </div>
       </div>
       <div class="voice-card fade-up">
         <div class="voice-stars">★★★★★</div>
-        <div class="voice-age">22歳｜北海道 → 埼玉</div>
-        <p class="voice-text">「何から始めればいいかわからなかったけど、全部サポートしてもらえました。アパートも仕事も1ヶ月かからずに決まって、今は充実した毎日を送っています。」</p>
+        <div class="voice-profile">21歳・新潟県 → 埼玉</div>
+        <p class="voice-text">「高卒で職歴もないから断られると思っていたのに、未経験OKの求人をたくさん紹介してもらえました。面接対策も何度もやってくれて、初めての面接で内定。電気やWi-Fiの手続きまでやってもらえて感動しました。」</p>
         <div class="voice-person">
           <div class="voice-avatar">👨</div>
           <div>
-            <div class="voice-name">T・Mさん（22歳・男性）</div>
-            <div class="voice-attr">北海道 → 埼玉 / 物流職に就職</div>
+            <div class="voice-name">M・Rさん（21歳・男性）</div>
+            <div class="voice-attr">新潟 → 埼玉 / 製造業に就職</div>
           </div>
         </div>
       </div>
       <div class="voice-card fade-up">
         <div class="voice-stars">★★★★★</div>
-        <div class="voice-age">27歳｜大阪 → 東京</div>
-        <p class="voice-text">「一人だったら途中で諦めてたと思います。お金の面でも不安だったのに、支援制度のことも教えてもらえて本当に助かりました。勇気を出して相談してよかった。」</p>
+        <div class="voice-profile">24歳・広島県 → 東京</div>
+        <p class="voice-text">「一人で上京するのが不安すぎて、でも地元にいても未来が見えなくて。相談したら親身に話を聞いてくれて、気づいたら上京の準備が全部整っていました。入社後も連絡してくれるので心強いです。」</p>
         <div class="voice-person">
-          <div class="voice-avatar">👨</div>
+          <div class="voice-avatar">👩</div>
           <div>
-            <div class="voice-name">K・Sさん（27歳・男性）</div>
-            <div class="voice-attr">大阪 → 東京 / 営業職に転職</div>
+            <div class="voice-name">N・Mさん（24歳・女性）</div>
+            <div class="voice-attr">広島 → 東京 / 接客業に就職</div>
           </div>
         </div>
       </div>
@@ -1051,68 +687,52 @@ body {
   </div>
 </section>
 
-<!-- ===== FAQ ===== -->
+<!-- FAQ -->
 <section class="faq" id="faq">
   <div class="container">
-    <div style="text-align:center;">
-      <div class="section-tag">FAQ</div>
-      <h2 class="section-title center">よくある<span class="accent">質問</span></h2>
-      <div class="section-divider"></div>
+    <div class="section-header">
+      <div class="pill">FAQ</div>
+      <h2 class="section-title">よくある<span class="hl">質問</span></h2>
     </div>
     <div class="faq-list">
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          <div class="faq-q-icon">Q</div>
-          <div class="faq-q-text">未経験でも大丈夫ですか？</div>
-          <div class="faq-toggle">＋</div>
-        </div>
-        <div class="faq-a">はい、大丈夫です。未経験歓迎・学歴不問の求人も多数ご用意しています。今の経歴よりも、これからやりたいことを一緒に考えることを大切にしています。</div>
+        <div class="faq-q"><div class="faq-q-icon">Q</div><div class="faq-q-text">サポートは本当に無料ですか？</div><div class="faq-toggle">＋</div></div>
+        <div class="faq-a">はい、実質無料でご利用いただけます。詳しい内容については無料面談の際にご説明しますので、まずはお気軽にご相談ください。</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          <div class="faq-q-icon">Q</div>
-          <div class="faq-q-text">地方からでも利用できますか？</div>
-          <div class="faq-toggle">＋</div>
-        </div>
-        <div class="faq-a">はい、全国どこからでもご利用いただけます。LINE・Zoom・電話など、ご都合に合わせたオンライン完結対応です。移動の必要はありません。</div>
+        <div class="faq-q"><div class="faq-q-icon">Q</div><div class="faq-q-text">地方に住んでいても利用できますか？</div><div class="faq-toggle">＋</div></div>
+        <div class="faq-a">はい、全国どこからでもご利用いただけます。LINE・Zoom・電話など、ご都合に合わせた方法でオンライン完結対応しています。移動の必要は一切ありません。</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          <div class="faq-q-icon">Q</div>
-          <div class="faq-q-text">初期費用が少なくても大丈夫ですか？</div>
-          <div class="faq-toggle">＋</div>
-        </div>
-        <div class="faq-a">大丈夫です。寮・社宅付きの求人や初期費用を抑えられる物件をご案内できます。また上京スタート支援金などのサポート制度もご活用いただけます。</div>
+        <div class="faq-q"><div class="faq-q-icon">Q</div><div class="faq-q-text">未経験・学歴に自信がなくても大丈夫ですか？</div><div class="faq-toggle">＋</div></div>
+        <div class="faq-a">大丈夫です。未経験OK・学歴不問の求人も多数ご紹介しています。今の経歴よりも、これからやりたいことを一緒に考えることを大切にしています。</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          <div class="faq-q-icon">Q</div>
-          <div class="faq-q-text">無理な契約や強引な勧誘はありませんか？</div>
-          <div class="faq-toggle">＋</div>
-        </div>
-        <div class="faq-a">一切ありません。事前に内容を丁寧に説明し、ご納得いただいた上で進めます。相談・情報収集だけでも大歓迎です。納得いくまでゆっくりお考えください。</div>
+        <div class="faq-q"><div class="faq-q-icon">Q</div><div class="faq-q-text">初期費用が少なくても上京できますか？</div><div class="faq-toggle">＋</div></div>
+        <div class="faq-a">はい、できます。寮・社宅付きの求人紹介や、初期費用を抑えられる物件のご案内など、お金の不安を持つ方へのサポートも充実しています。</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="faq-q-icon">Q</div><div class="faq-q-text">相談したら必ず申し込まないといけませんか？</div><div class="faq-toggle">＋</div></div>
+        <div class="faq-a">いいえ、強引な勧誘は一切しません。相談・情報収集だけでも大歓迎です。納得いくまでゆっくりお考えいただいて大丈夫です。</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
+<!-- CTA -->
 <section class="cta-section" id="contact">
   <div class="cta-inner">
-    <h2 class="cta-title">「このまま」を変えたいなら、<br><em>最初の一歩を。</em></h2>
-    <p class="cta-desc">
-      上京支援センターは、あなたの挑戦を全力でサポートします。<br>
-      仕事のこと、お金のこと、住まいのこと。何でもOK。
-    </p>
+    <h2 class="cta-title">まずは、無料相談から<br>はじめましょう。</h2>
+    <p class="cta-desc">仕事のこと、住まいのこと、お金のこと。何でもOK。<br>一人で悩まずにお気軽にどうぞ。</p>
     <div class="cta-btns">
-      <a href="line-survey.html" class="btn-green" style="font-size:16px;padding:18px 36px;">📋 LINEで無料相談する</a>
-      <a href="reservation.html" class="btn-gold"  style="font-size:16px;padding:18px 36px;">📅 無料面談を予約する</a>
+      <a href="line-survey.html" class="btn-orange" style="font-size:16px;padding:18px 36px;">📋 LINEで無料相談する</a>
+      <a href="reservation.html" class="btn-outline">📅 無料面談を予約する</a>
     </div>
-    <p class="cta-note">🔒 費用は一切かかりません。しつこい営業も一切しません。</p>
+    <p class="cta-note">🔒 しつこい営業は一切しません。</p>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
@@ -1121,19 +741,16 @@ body {
           <div class="footer-logo-icon">🏙️</div>
           <div class="footer-logo-text">上京支援センター</div>
         </a>
-        <div class="footer-by">by 株式会社７PRIDE</div>
-        <p class="footer-tagline">
-          上京・転職・住まいをワンストップで支援。<br>
-          あなたの挑戦の"最初の一歩"を作ります。
-        </p>
+        <div class="footer-by">株式会社上京支援センター</div>
+        <p class="footer-tagline">就職・住まい・新生活をワンストップで支援。<br>あなたの上京の最初の一歩を作ります。</p>
       </div>
       <div>
         <div class="footer-links-title">サービス</div>
         <ul class="footer-links">
-          <li><a href="#flow">利用の流れ</a></li>
-          <li><a href="#pricing">サポートプラン</a></li>
-          <li><a href="#support">サポート制度</a></li>
-          <li><a href="#strengths">上京支援センターの強み</a></li>
+          <li><a href="#features">就職・転職支援</a></li>
+          <li><a href="#features">住まい探し支援</a></li>
+          <li><a href="#features">新生活セットアップ</a></li>
+          <li><a href="#features">上京後フォロー</a></li>
         </ul>
       </div>
       <div>
@@ -1141,70 +758,48 @@ body {
         <ul class="footer-links">
           <li><a href="line-survey.html">LINEで無料相談</a></li>
           <li><a href="reservation.html">無料面談を予約する</a></li>
-          <li><a href="index.html">株式会社７PRIDE</a></li>
+          <li><a href="index.html">運営会社</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2024 上京支援センター / 株式会社７PRIDE All Rights Reserved.</span>
+      <span>© 2024 株式会社上京支援センター All Rights Reserved.</span>
       <a href="#">プライバシーポリシー</a>
     </div>
   </div>
 </footer>
 
 <div class="sticky-cta" id="sticky-cta">
-  <a href="line-survey.html" class="s-line">📋 LINE相談</a>
+  <a href="line-survey.html" class="s-line">📋 LINE相談（無料）</a>
   <a href="reservation.html" class="s-consult">📅 面談予約</a>
 </div>
 
-<!-- ===== JS ===== -->
 <script>
-  // Mobile menu
   let menuOpen = false;
-  function toggleMenu() {
-    menuOpen = !menuOpen;
-    document.getElementById('mobile-menu').classList.toggle('open', menuOpen);
-  }
-  function closeMenu() {
-    menuOpen = false;
-    document.getElementById('mobile-menu').classList.remove('open');
-  }
-  document.addEventListener('click', e => {
-    if (menuOpen && !e.target.closest('.header') && !e.target.closest('.mobile-menu')) closeMenu();
-  });
+  function toggleMenu() { menuOpen = !menuOpen; document.getElementById('mobile-menu').classList.toggle('open', menuOpen); }
+  function closeMenu() { menuOpen = false; document.getElementById('mobile-menu').classList.remove('open'); }
+  document.addEventListener('click', e => { if (menuOpen && !e.target.closest('.header') && !e.target.closest('.mobile-menu')) closeMenu(); });
 
-  // FAQ accordion
   function toggleFaq(item) {
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   }
 
-  // Scroll fade-up with stagger
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
   }, { threshold: 0.10 });
-
   document.querySelectorAll('.fade-up').forEach(el => {
     const siblings = Array.from(el.parentElement.children).filter(c => c.classList.contains('fade-up'));
     el.style.transitionDelay = `${siblings.indexOf(el) * 80}ms`;
     observer.observe(el);
   });
 
-  // Hide sticky CTA when main CTA visible
   const ctaEl = document.getElementById('contact');
   const stickyEl = document.getElementById('sticky-cta');
   if (ctaEl && stickyEl) {
-    new IntersectionObserver(entries => {
-      stickyEl.style.display = entries[0].isIntersecting ? 'none' : 'flex';
-    }, { threshold: 0.1 }).observe(ctaEl);
+    new IntersectionObserver(entries => { stickyEl.style.display = entries[0].isIntersecting ? 'none' : 'flex'; }, { threshold: 0.1 }).observe(ctaEl);
   }
 </script>
-
 </body>
 </html>
