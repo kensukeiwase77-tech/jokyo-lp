@@ -103,7 +103,9 @@ body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: 
 /* ===== HERO ===== */
 .hero {
   min-height: 100svh;
-  background: var(--grad);
+  background:
+    linear-gradient(135deg, rgba(107,71,220,0.86) 0%, rgba(65,105,225,0.86) 100%),
+    url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1400&q=80&fit=crop&auto=format') center/cover no-repeat;
   display: flex; align-items: center;
   position: relative; overflow: hidden;
   padding: 100px 20px 80px;
@@ -289,7 +291,8 @@ body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: 
 }
 .voice-text { font-size: 13.5px; color: var(--text); line-height: 1.85; margin-bottom: 18px; }
 .voice-person { display: flex; align-items: center; gap: 10px; padding-top: 14px; border-top: 1px solid var(--border); }
-.voice-avatar { width: 40px; height: 40px; background: var(--purple-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.voice-avatar { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: var(--purple-light); }
+.voice-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .voice-name { font-size: 13px; font-weight: 700; color: var(--text); }
 .voice-attr { font-size: 11px; color: var(--text-light); margin-top: 2px; }
 
@@ -640,7 +643,7 @@ body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: 
         <div class="voice-profile">23歳・宮城県 → 東京</div>
         <p class="voice-text">「仕事も家も全部バラバラに探すのが怖くて、ずっと踏み出せなかったんです。でも相談したらその日のうちに担当者の方から連絡が来て、2ヶ月後には東京で働いていました。本当に背中を押してもらえた感じです。」</p>
         <div class="voice-person">
-          <div class="voice-avatar">👨</div>
+          <div class="voice-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&auto=format&q=80" alt="T・Kさん"></div>
           <div>
             <div class="voice-name">T・Kさん（23歳・男性）</div>
             <div class="voice-attr">宮城 → 東京 / 営業職に就職</div>
@@ -652,7 +655,7 @@ body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: 
         <div class="voice-profile">25歳・福岡県 → 東京</div>
         <p class="voice-text">「お金がなくて上京なんて無理だと思っていました。でも初期費用を抑える方法を一緒に考えてくれて、寮付きの仕事も紹介してもらえて。今は東京で充実した生活を送っています。相談して本当によかった！」</p>
         <div class="voice-person">
-          <div class="voice-avatar">👩</div>
+          <div class="voice-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&auto=format&q=80" alt="S・Aさん"></div>
           <div>
             <div class="voice-name">S・Aさん（25歳・女性）</div>
             <div class="voice-attr">福岡 → 東京 / 事務職に転職</div>
@@ -664,7 +667,7 @@ body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: 
         <div class="voice-profile">21歳・新潟県 → 埼玉</div>
         <p class="voice-text">「高卒で職歴もないから断られると思っていたのに、未経験OKの求人をたくさん紹介してもらえました。面接対策も何度もやってくれて、初めての面接で内定。電気やWi-Fiの手続きまでやってもらえて感動しました。」</p>
         <div class="voice-person">
-          <div class="voice-avatar">👨</div>
+          <div class="voice-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop&auto=format&q=80" alt="M・Rさん"></div>
           <div>
             <div class="voice-name">M・Rさん（21歳・男性）</div>
             <div class="voice-attr">新潟 → 埼玉 / 製造業に就職</div>
@@ -676,7 +679,7 @@ body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: 
         <div class="voice-profile">24歳・広島県 → 東京</div>
         <p class="voice-text">「一人で上京するのが不安すぎて、でも地元にいても未来が見えなくて。相談したら親身に話を聞いてくれて、気づいたら上京の準備が全部整っていました。入社後も連絡してくれるので心強いです。」</p>
         <div class="voice-person">
-          <div class="voice-avatar">👩</div>
+          <div class="voice-avatar"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&h=96&fit=crop&auto=format&q=80" alt="N・Mさん"></div>
           <div>
             <div class="voice-name">N・Mさん（24歳・女性）</div>
             <div class="voice-attr">広島 → 東京 / 接客業に就職</div>
